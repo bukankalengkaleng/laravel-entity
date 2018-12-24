@@ -24,6 +24,7 @@ Jika kamu menggunakan versi dibawah itu, kamu perlu meregistrasi manual dalam fi
     // ...
     BukanKalengKaleng\LaravelEntity\LaravelEntityServiceProvider::class,
 ];
+```
 
 ## Cara Menggunakan
 
