@@ -8,12 +8,11 @@ An artisan command to generate a complete entity.
 
 ## Motivation
 
-Creating an entity (*eg: Product, Employee, etc*) that has a complete artefact (*Model, Factory, Migration, Form Requests, Feature dan Unit tests, Policy, and Controller*) could take a time and boring. This artisan command will make it faster.
+Creating an entity (*eg: Product, Employee, etc*) that has a complete artefact (*Model, Factory, Migration, Form Requests, Feature / Unit tests, Policy, and Controller*) could take a time and boring. This artisan command will make it faster.
 
 ## Installation
 
-1. `composer require bukankalengkaleng/laravel-entity`
-1. *kidding, no step 2*
+`composer require bukankalengkaleng/laravel-entity`
 
 In Laravel 5.5 the service provider will automatically get registered. In older versions of the framework just add the service provider in `config/app.php` file:
 
