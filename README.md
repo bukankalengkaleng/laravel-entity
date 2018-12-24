@@ -10,7 +10,8 @@ Membuat entitas (contoh: Product, Employee, dsb) yang lengkap (ada Model, Factor
 
 ## Instalasi
 
-`composer require bukankalengkaleng/laravel-packages`
+1. `composer require bukankalengkaleng/laravel-packages`
+1. *no step 2*
 
 Laravel v5.5 dan keatas sudah menggunakan **package auto-discovery**, *means that* kamu tidak perlu lagi meregistrasi package ini secara manual.
 
