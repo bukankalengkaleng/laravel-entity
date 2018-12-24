@@ -1,0 +1,87 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\{{modelName}};
+use App\Http\Controllers\Controller;
+use App\Http\Requests\{{requestStoreName}};
+use App\Http\Requests\{{requestUpdateName}};
+
+class {{className}} extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\{{requestStoreName}}  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store({{requestStoreName}} $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\{{modelName}}  ${{modelNameVariabel}}
+     * @return \Illuminate\Http\Response
+     */
+    public function show({{modelName}} ${{modelNameVariabel}})
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\{{modelName}}  ${{modelNameVariabel}}
+     * @return \Illuminate\Http\Response
+     */
+    public function edit({{modelName}} ${{modelNameVariabel}})
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\{{requestUpdateName}}  $request
+     * @param  \App\Models\{{modelName}}  ${{modelNameVariabel}}
+     * @return \Illuminate\Http\Response
+     */
+    public function update({{requestUpdateName}} $request, {{modelName}} ${{modelNameVariabel}})
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\{{modelName}}  ${{modelNameVariabel}}
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy({{modelName}} ${{modelNameVariabel}})
+    {
+        //
+    }
+}
