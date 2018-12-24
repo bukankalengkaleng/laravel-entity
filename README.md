@@ -4,7 +4,7 @@
 
 ## Deskripsi
 
-Artisan command untuk membuat entitas yang lengkap.
+*Artisan command* untuk membuat entitas yang lengkap.
 
 ## Motivasi
 
