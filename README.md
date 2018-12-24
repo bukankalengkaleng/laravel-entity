@@ -4,7 +4,7 @@
 
 ## Deskripsi
 
-Artisan command untuk membuat entitas dalam Laravel.
+Artisan command untuk membuat entitas yang lengkap.
 
 ## Motivasi
 
