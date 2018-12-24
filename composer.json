@@ -1,6 +1,6 @@
 {
     "name": "rkukuh/laravel-entity",
-    "description": "A library to generate an entity (Model, Controller, Form Request, Tests, Factory, Migration) in Laravel app",
+    "description": "An artisan command to generate an entity (Model, Controller, Form Request, Tests, Factory, Migration) for Laravel app",
     "keywords": ["bukankalengkaleng", "laravel", "artisan", "command", "entity"],
     "type": "library",
     "license": "MIT",
