@@ -4,6 +4,7 @@
     "keywords": ["bukankalengkaleng", "laravel", "artisan", "command", "entity"],
     "type": "library",
     "license": "MIT",
+    "homepage": "https://github.com/bukankalengkaleng/laravel-entity",
     "authors": [
         {
             "name": "R. Kukuh",

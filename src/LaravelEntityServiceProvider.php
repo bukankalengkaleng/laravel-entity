@@ -16,8 +16,7 @@ class LaravelEntityServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                EntityMake::class,
-                EntityDelete::class,
+                //
             ]);
         }
     }
