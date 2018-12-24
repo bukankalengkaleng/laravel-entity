@@ -18,5 +18,12 @@
         "psr-4": {
             "BukanKalengKaleng\\LaravelEntity\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BukanKalengKaleng\\LaravelEntity\\LaravelEntityServiceProvider"
+            ]
+        }
     }
 }
