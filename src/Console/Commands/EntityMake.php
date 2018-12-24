@@ -28,7 +28,7 @@ class EntityMake extends Command
      */
     protected $signature = 'entity:make
                             {name : Name of the entity, eg: Post, Product, Employee}
-                            {--namespace=Both : eg: Both | None | [your-choice]}
+                            {--namespace=Admin and Frontend : eg: None | [your-choice]}
                             {--a|all=true : Generate an entity\'s with its all artefacts}
                             {--c|controller : Generate an entity\'s Controller}
                             {--d|dummy : Generate an entity\'s Dummy Seeder}
