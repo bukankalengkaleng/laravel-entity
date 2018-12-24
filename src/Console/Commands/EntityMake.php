@@ -108,6 +108,7 @@ class EntityMake extends Command
 
             case 'Overwrite existing model':
 
+            case 'No model':
             default:
                 $this->makeModel();
                 $this->makeMigration();
@@ -141,6 +142,10 @@ class EntityMake extends Command
                 'Use existing model',
                 'Abort'
             ]);
+        } else {
+            $modelChoice = 'No model';
+
+            return $modelChoice;
         }
 
         return $modelChoice;
