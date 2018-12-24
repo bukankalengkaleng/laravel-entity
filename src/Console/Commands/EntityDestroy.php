@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace BukanKalengKaleng\LaravelEntity\Console\Commands;
 
 use Illuminate\Console\Command;
 
