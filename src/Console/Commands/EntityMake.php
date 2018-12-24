@@ -3,6 +3,7 @@
 namespace BukanKalengKaleng\LaravelEntity\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Filesystem\Filesystem;
 
 class EntityMake extends Command
 {
