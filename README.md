@@ -8,7 +8,7 @@ Artisan command untuk membuat entitas yang lengkap.
 
 ## Motivasi
 
-Membuat entitas (contoh: Product, Employee, dsb) yang lengkap (ada Model, Factory, Migration, Form Requests, Feature dan Unit tests, Policy, dan Controller-nya) akan memakan waktu jika dilakukan manual. Artisan command ini akan mempercepatnya.
+Membuat entitas (contoh: *Product, Employee*, dsb) yang lengkap (ada *Model, Factory, Migration, Form Requests, Feature / Unit tests, Policy*, dan *Controller*-nya) akan memakan waktu jika dilakukan manual. Artisan command ini akan mempercepatnya.
 
 ## Instalasi
 
