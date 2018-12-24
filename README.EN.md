@@ -15,7 +15,14 @@ Creating an entity (*eg: Product, Employee, etc*) that has a complete artefact (
 1. `composer require bukankalengkaleng/laravel-entity`
 1. *kidding, no step 2*
 
-Laravel v5.5 dan keatas sudah menggunakan **package auto-discovery**, *means that* kamu tidak perlu lagi meregistrasi package ini secara manual.
+In Laravel 5.5 the service provider will automatically get registered. In older versions of the framework just add the service provider in `config/app.php` file:
+
+```php
+'providers' => [
+    // ...
+    BukanKalengKaleng\LaravelEntity\LaravelEntityServiceProvider::class,
+];
+```
 
 ## Usage
 

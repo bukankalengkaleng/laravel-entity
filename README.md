@@ -15,7 +15,15 @@ Membuat entitas (contoh: Product, Employee, dsb) yang lengkap (ada Model, Factor
 1. `composer require bukankalengkaleng/laravel-entity`
 1. becanda, gak ada *step 2*
 
-Laravel v5.5 dan keatas sudah menggunakan **package auto-discovery**, *means that* kamu tidak perlu lagi meregistrasi package ini secara manual.
+Laravel v5.5 dan keatas sudah menggunakan **package auto-discovery**, *means that* kamu tidak perlu lagi meregistrasi package ini secara manual. 
+
+Jika kamu menggunakan versi dibawah itu, kamu perlu meregistrasi manual dalam file `config/app.php`:
+
+```php
+'providers' => [
+    // ...
+    BukanKalengKaleng\LaravelEntity\LaravelEntityServiceProvider::class,
+];
 
 ## Cara Menggunakan
 
