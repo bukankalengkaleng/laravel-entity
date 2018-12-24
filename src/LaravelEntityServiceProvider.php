@@ -3,7 +3,6 @@
 namespace BukanKalengKaleng\LaravelEntity;
 
 use Illuminate\Support\ServiceProvider;
-use BukanKalengKaleng\LaravelEntity\Console\Commands\LaravelEntity;
 
 class LaravelEntityServiceProvider extends ServiceProvider
 {
