@@ -8,7 +8,7 @@ return [
          * eg: namespace App\Models;
          *
          */
-        'directory' => 'Models',
+        'directory' => 'app/Models',
 
         /**
          * Set a base model for your entity
