@@ -398,7 +398,9 @@ class EntityMake extends Command
                 case 'both':
                     /** Backend's Controller */
 
-                    if ($this->files->exists($path = $backendPath.'/'.$this->controllerName)) {
+                    if ($this->files->exists(
+                        $path = $backendPath.'/'.$this->controllerName)
+                    ) {
                         $this->input->setOption('controller', false);
 
                         $this->line($fileExistsMessage.' '.config('entity.namespace.backend').'/'.$this->controllerName);
@@ -411,7 +413,9 @@ class EntityMake extends Command
 
                     /** Frontend's Controller */
 
-                    if ($this->files->exists($path = $frontendPath.'/'.$this->controllerName)) {
+                    if ($this->files->exists(
+                        $path = $frontendPath.'/'.$this->controllerName)
+                    ) {
                         $this->input->setOption('controller', false);
 
                         $this->line($fileExistsMessage.' '.config('entity.namespace.frontend').'/'.$this->controllerName);
@@ -425,7 +429,9 @@ class EntityMake extends Command
                     break;
 
                 case 'none':
-                    if ($this->files->exists($path = $this->controllerName)) {
+                    if ($this->files->exists(
+                        $path = $this->controllerName)
+                    ) {
                         $this->input->setOption('controller', false);
 
                         $this->line($fileExistsMessage.' '.$this->controllerName);
@@ -610,6 +616,7 @@ class EntityMake extends Command
             if ($this->option('dummy')) {
 
                 $seederDummy = $this->pluralizedEntity.'.php';
+
                 $path = database_path('seeds/'.config('entity.dummy.directory').'/'.$seederDummy);
 
                 if ($this->files->exists($path)) {
