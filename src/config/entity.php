@@ -3,11 +3,13 @@
 return [
     /**
      * NAMESPACE
-     * A configuration for the entity's:
-     * - Form Requests
-     * - Controllers
+     * A configuration for the entity's Form Requests' and Controllers' namespace
      *
      */
+    'namespace' => [
+        'backend'  => 'Admin',
+        'frontend' => 'Frontend',
+    ],
 
     /**
      * MODEL
