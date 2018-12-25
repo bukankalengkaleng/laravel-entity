@@ -14,6 +14,8 @@ Creating an entity (*eg: Product, Employee, etc*) that has a complete artefact (
 
 ## Installation
 
+### Step 1/2
+
 `composer require bukankalengkaleng/laravel-entity`
 
 In Laravel 5.5 the service provider will automatically get registered. In older versions of the framework just add the service provider in `config/app.php` file:
@@ -24,6 +26,12 @@ In Laravel 5.5 the service provider will automatically get registered. In older 
     BukanKalengKaleng\LaravelEntity\LaravelEntityServiceProvider::class,
 ];
 ```
+
+### Step 2/2 (optional)
+
+You can publish this package file with:
+
+`php artisan vendor:publish --tag="laravel-entity"`
 
 ## Usage
 
