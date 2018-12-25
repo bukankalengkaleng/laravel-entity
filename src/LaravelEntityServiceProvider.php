@@ -20,7 +20,7 @@ class LaravelEntityServiceProvider extends ServiceProvider
         }
 
         $this->publishes([
-            __DIR__.'/path/to/config/entity.php' => config_path('entity.php'),
+            __DIR__.'/src/config/entity.php' => config_path('entity.php'),
         ]);
     }
 
