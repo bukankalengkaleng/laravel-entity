@@ -3,7 +3,8 @@
 return [
     /**
      * NAMESPACE
-     * A configuration for the entity's Form Requests' and Controllers' namespace
+     * A configuration for the entity's Form Requests' and Controllers' namespace,
+     * when using argument '--namespace=Both'
      *
      */
     'namespace' => [
@@ -39,6 +40,7 @@ return [
      * It purpose is to make a dummy (obviously) data
      */
     'dummy' => [
-        'directory' => 'dummies',   // /database/seeds/dummies/
+        'is_create' => true,          // Whether the dummy seeds has to be created
+        'directory' => 'dummies',     // /database/seeds/dummies
     ],
 ];
