@@ -576,21 +576,21 @@ class EntityMake extends Command
 
         if ($this->option('seeder')) {
 
-            $seederTable = ($this->pluralizedEntity).'TableSeeder';
+            $seederTable = ($this->pluralizedEntity).'TableSeeder.php';
 
             if ($this->files->exists(
-                $path = database_path('seeds/'.$seederTable.'.php'))
+                $path = database_path('seeds/'.$seederTable))
             ) {
                 $this->input->setOption('seeder', false);
 
-                $this->line('Table Seeder already exists: '.$seederTable.'.php');
+                $this->line('Table Seeder already exists: '.$seederTable);
             }
             else {
                 $this->callSilent('make:seeder', [
-                    'name' => $seederTable
+                    'name' => substr($seederTable, 0, -4)
                 ]);
 
-                $this->addToTable('Table Seeder', $seederTable.'.php');
+                $this->addToTable('Table Seeder', $seederTable);
 
                 $this->info($this->data['artefact'].' created.');
 
@@ -602,18 +602,18 @@ class EntityMake extends Command
 
         if ($this->option('dummy')) {
 
-            $seederDummy = $this->pluralizedEntity;
-            $path = database_path('seeds/dummies/'.$seederDummy.'.php');
+            $seederDummy = $this->pluralizedEntity.'.php';
+            $path = database_path('seeds/'.config('entity.dummy.directory').'/'.$seederDummy);
 
             if ($this->files->exists($path)) {
                 $this->input->setOption('dummy', false);
 
-                $this->line('Dummy Seeder already exists: dummies/'.$seederDummy.'.php');
+                $this->line('Dummy Seeder already exists: '.config('entity.dummy.dummies').$seederDummy);
             }
             else {
                 $this->compileDummySeederStub($path);
 
-                $this->addToTable('Dummy Seeder', 'dummies/'.$seederDummy.'.php');
+                $this->addToTable('Dummy Seeder', config('entity.dummy.dummies').$seederDummy);
 
                 $this->info($this->data['artefact'].' created.');
 
