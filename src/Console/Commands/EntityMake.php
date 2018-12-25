@@ -471,7 +471,7 @@ class EntityMake extends Command
         }
 
         $stub = str_replace('{{classNamespace}}', $namespace, $stub);
-        $stub = str_replace('{{modelName}}', $this->modelName, $stub);
+        $stub = str_replace('{{modelName}}', substr($this->modelName, 0, -4), $stub);
         $stub = str_replace('{{className}}', $this->controllerName, $stub);
 
         $stub = str_replace('{{requestStoreNamespace}}', $namespace, $stub);
@@ -501,7 +501,7 @@ class EntityMake extends Command
             $factory = $this->entity.'Factory';
 
             if ($this->files->exists(
-                $path = base_path().'/database/factories/'.$factory.'.php')
+                $path = database_path('factories/'.$factory.'.php'))
             ) {
                 $this->input->setOption('factory', false);
 
@@ -526,7 +526,7 @@ class EntityMake extends Command
     {
         $stub = $this->files->get(__DIR__.'/stubs/model.factory.stub');
 
-        $stub = str_replace('{{modelName}}', $this->modelName, $stub);
+        $stub = str_replace('{{modelName}}', substr($this->modelName, 0, -4), $stub);
 
         $this->files->put($path, $stub);
 
@@ -545,7 +545,7 @@ class EntityMake extends Command
             $policy = $this->entity.'Policy';
 
             if ($this->files->exists(
-                $path = base_path().'/app/Policies/'.$policy.'.php')
+                $path = app_path('Policies/'.$policy.'.php'))
             ) {
                 $this->input->setOption('policy', false);
 
@@ -632,7 +632,7 @@ class EntityMake extends Command
     {
         $stub = $this->files->get(__DIR__.'/stubs/seeder.dummy.stub');
 
-        $stub = str_replace('{{modelName}}', $this->modelName, $stub);
+        $stub = str_replace('{{modelName}}', substr($this->modelName, 0, -4), $stub);
         $stub = str_replace('{{className}}', $this->pluralizedEntity, $stub);
 
         $this->makeDirectory($path);
