@@ -583,14 +583,14 @@ class EntityMake extends Command
             ) {
                 $this->input->setOption('seeder', false);
 
-                $this->line('Table Seeder already exists: database/seeds/'.$seederTable.'.php');
+                $this->line('Table Seeder already exists: '.$seederTable.'.php');
             }
             else {
                 $this->callSilent('make:seeder', [
                     'name' => $seederTable
                 ]);
 
-                $this->addToTable('Table Seeder', 'database/seeds/'.$seederTable.'.php');
+                $this->addToTable('Table Seeder', $seederTable.'.php');
 
                 $this->info($this->data['artefact'].' created.');
 
@@ -608,12 +608,12 @@ class EntityMake extends Command
             if ($this->files->exists($path)) {
                 $this->input->setOption('dummy', false);
 
-                $this->line('Dummy Seeder already exists: database/seeds/dummies/'.$seederDummy.'.php');
+                $this->line('Dummy Seeder already exists: dummies/'.$seederDummy.'.php');
             }
             else {
                 $this->compileDummySeederStub($path);
 
-                $this->addToTable('Dummy Seeder', 'database/seeds/dummies/'.$seederDummy.'.php');
+                $this->addToTable('Dummy Seeder', 'dummies/'.$seederDummy.'.php');
 
                 $this->info($this->data['artefact'].' created.');
 
@@ -660,14 +660,14 @@ class EntityMake extends Command
             ) {
                 $this->input->setOption('test', false);
 
-                $this->line('Test: Feature already exists: tests/Feature/'.$test.'.php');
+                $this->line('Test: Feature already exists: Feature/'.$test.'.php');
             }
             else {
                 $this->callSilent('make:test', [
                     'name' => $test
                 ]);
 
-                $this->addToTable('Test: Feature', 'tests/Feature/'.$test.'.php');
+                $this->addToTable('Test: Feature', 'Feature/'.$test.'.php');
 
                 $this->info($this->data['artefact'].' created.');
             }
@@ -679,7 +679,7 @@ class EntityMake extends Command
             ) {
                 $this->input->setOption('test', false);
 
-                $this->line('Test: Unit already exists: tests/Unit/'.$test.'.php');
+                $this->line('Test: Unit already exists: Unit/'.$test.'.php');
             }
             else {
                 $this->callSilent('make:test', [
@@ -687,7 +687,7 @@ class EntityMake extends Command
                     '--unit' => true,
                 ]);
 
-                $this->addToTable('Test: Unit', 'tests/Unit/'.$test.'.php');
+                $this->addToTable('Test: Unit', 'Unit/'.$test.'.php');
 
                 $this->info($this->data['artefact'].' created.');
             }
