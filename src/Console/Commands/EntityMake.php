@@ -56,7 +56,6 @@ class EntityMake extends Command
         parent::__construct();
 
         $this->files = $files;
-        $this->app_path = base_path().'/app/';
     }
 
     /**
@@ -132,7 +131,7 @@ class EntityMake extends Command
         $modelChoice = '';
         $this->modelName = $this->entity.'.php';
         $this->modelNamespace = 'App/'.config('entity.model.namespace');
-        $this->modelFullPath  = $this->app_path.config('entity.model.namespace').'/'.$this->modelName;
+        $this->modelFullPath  = app_path().'/'.config('entity.model.namespace').'/'.$this->modelName;
 
         if ($this->files->exists($this->modelFullPath)) {
             $this->error('Model already exists: '.$this->modelNamespace.'/'.$this->modelName);
