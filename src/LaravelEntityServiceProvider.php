@@ -16,10 +16,7 @@ class LaravelEntityServiceProvider extends ServiceProvider
     public function boot()
     {
         if ($this->app->runningInConsole()) {
-            $this->commands([
-                EntityMake::class,
-                EntityDestroy::class,
-            ]);
+            $this->commands([EntityMake::class]);
         }
     }
 
