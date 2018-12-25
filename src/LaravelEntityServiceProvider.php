@@ -4,7 +4,6 @@ namespace BukanKalengKaleng\LaravelEntity;
 
 use Illuminate\Support\ServiceProvider;
 use BukanKalengKaleng\LaravelEntity\Console\Commands\EntityMake;
-use BukanKalengKaleng\LaravelEntity\Console\Commands\EntityDestroy;
 
 class LaravelEntityServiceProvider extends ServiceProvider
 {
