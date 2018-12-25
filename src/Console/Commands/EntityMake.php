@@ -28,7 +28,7 @@ class EntityMake extends Command
      */
     protected $signature = 'entity:make
                             {name : Name of the entity, eg: Post, Product, Employee}
-                            {--namespace=Admin and Frontend : eg: None | [your-choice]}
+                            {--namespace=Both : eg: Both | None | [your-choice]}
                             {--a|all=true : Generate an entity\'s with its all artefacts}
                             {--c|controller : Generate an entity\'s Controller}
                             {--d|dummy : Generate an entity\'s Dummy Seeder}
@@ -219,7 +219,7 @@ class EntityMake extends Command
             $this->requestUpdateName = $this->entity . 'Update';
 
             switch (strtolower($this->namespace)) {
-                case 'admin and frontend':
+                case 'both':
                     /** Store Request on Admin namespace */
 
                     if ($this->files->exists(
@@ -383,7 +383,7 @@ class EntityMake extends Command
             $this->controllerName = $this->entity . 'Controller';
 
             switch (strtolower($this->namespace)) {
-                case 'admin and frontend':
+                case 'both':
                     /** Admin's Controller */
 
                     if ($this->files->exists(
