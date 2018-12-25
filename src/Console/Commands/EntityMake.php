@@ -600,24 +600,26 @@ class EntityMake extends Command
 
         /** Dummy data seeder */
 
-        if ($this->option('dummy')) {
+        if (config('entity.dummy.should_create') === true) {
+            if ($this->option('dummy')) {
 
-            $seederDummy = $this->pluralizedEntity.'.php';
-            $path = database_path('seeds/'.config('entity.dummy.directory').'/'.$seederDummy);
+                $seederDummy = $this->pluralizedEntity.'.php';
+                $path = database_path('seeds/'.config('entity.dummy.directory').'/'.$seederDummy);
 
-            if ($this->files->exists($path)) {
-                $this->input->setOption('dummy', false);
+                if ($this->files->exists($path)) {
+                    $this->input->setOption('dummy', false);
 
-                $this->line('Dummy Seeder already exists: '.config('entity.dummy.dummies').$seederDummy);
-            }
-            else {
-                $this->compileDummySeederStub($path);
+                    $this->line('Dummy Seeder already exists: '.config('entity.dummy.dummies').$seederDummy);
+                }
+                else {
+                    $this->compileDummySeederStub($path);
 
-                $this->addToTable('Dummy Seeder', config('entity.dummy.dummies').$seederDummy);
+                    $this->addToTable('Dummy Seeder', config('entity.dummy.dummies').$seederDummy);
 
-                $this->info($this->data['artefact'].' created.');
+                    $this->info($this->data['artefact'].' created.');
 
-                array_push($this->additionalSteps, 'Call the Dummy seeder in DummyDataSeeder');
+                    array_push($this->additionalSteps, 'Call the Dummy seeder in DummyDataSeeder');
+                }
             }
         }
     }
