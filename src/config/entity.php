@@ -21,10 +21,9 @@ return [
 
         /**
          * The directory where your models will resides, also act as their namespace.
-         * eg: namespace App\Models;
          *
          */
-        'directory' => 'app/Models',
+        'namespace' => 'Models',    // output: namespace App\Models;
 
         /**
          * Set a base model for your entity
