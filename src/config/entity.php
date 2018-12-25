@@ -40,7 +40,7 @@ return [
      * It purpose is to make a dummy (obviously) data
      */
     'dummy' => [
-        'is_create' => true,          // Whether the dummy seeds has to be created
-        'directory' => 'dummies',     // /database/seeds/dummies
+        'should_create' => true,          // Whether the dummy seeds has to be created
+        'directory'     => 'dummies',     // /database/seeds/dummies
     ],
 ];
