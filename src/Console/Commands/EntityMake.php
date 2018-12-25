@@ -4,7 +4,6 @@ namespace BukanKalengKaleng\LaravelEntity\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use function Spatie\SslCertificate\substr;
 
 class EntityMake extends Command
 {
@@ -238,7 +237,7 @@ class EntityMake extends Command
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => config('entity.namespace.backend').'/'.substr($this->requestStoreName, 0, -4)
+                            'name' => config('entity.namespace.backend').'/'.$this->removeFileExtension($this->requestStoreName)
                         ]);
 
                         $this->addToTable('Form Request', config('entity.namespace.backend').'/'.$this->requestStoreName);
@@ -255,7 +254,7 @@ class EntityMake extends Command
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => config('entity.namespace.backend').'/'.substr($this->requestUpdateName, 0, -4)
+                            'name' => config('entity.namespace.backend').'/'.$this->removeFileExtension($this->requestUpdateName)
                         ]);
 
                         $this->addToTable('Form Request', config('entity.namespace.backend').'/'.$this->requestUpdateName);
@@ -272,7 +271,7 @@ class EntityMake extends Command
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => config('entity.namespace.frontend').'/'.substr($this->requestStoreName, 0, -4)
+                            'name' => config('entity.namespace.frontend').'/'.$this->removeFileExtension($this->requestStoreName)
                         ]);
 
                         $this->addToTable('Form Request', config('entity.namespace.frontend').'/'.$this->requestStoreName);
@@ -289,7 +288,7 @@ class EntityMake extends Command
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => config('entity.namespace.frontend').'/'.substr($this->requestUpdateName, 0, -4)
+                            'name' => config('entity.namespace.frontend').'/'.$this->removeFileExtension($this->requestUpdateName)
                         ]);
 
                         $this->addToTable('Form Request', config('entity.namespace.frontend').'/'.$this->requestUpdateName);
@@ -309,7 +308,7 @@ class EntityMake extends Command
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => substr($this->requestStoreName, 0, -4)
+                            'name' => $this->removeFileExtension($this->requestStoreName)
                         ]);
 
                         $this->addToTable('Form Request', $this->requestStoreName);
@@ -326,7 +325,7 @@ class EntityMake extends Command
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => substr($this->requestUpdateName, 0, -4)
+                            'name' => $this->removeFileExtension($this->requestUpdateName)
                         ]);
 
                         $this->addToTable('Form Request', $this->requestUpdateName);
@@ -346,7 +345,7 @@ class EntityMake extends Command
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => $this->namespace.'/'.substr($this->requestStoreName, 0, -4)
+                            'name' => $this->namespace.'/'.$this->removeFileExtension($this->requestStoreName)
                         ]);
 
                         $this->addToTable('Form Request', $this->namespace.'/'.$this->requestStoreName);
@@ -363,7 +362,7 @@ class EntityMake extends Command
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => $this->namespace.'/'.substr($this->requestUpdateName, 0, -4)
+                            'name' => $this->namespace.'/'.$this->removeFileExtension($this->requestUpdateName)
                         ]);
 
                         $this->addToTable('Form Request', $this->namespace.'/'.$this->requestUpdateName);
@@ -478,14 +477,14 @@ class EntityMake extends Command
         }
 
         $stub = str_replace('{{classNamespace}}', $namespace, $stub);
-        $stub = str_replace('{{modelName}}', substr($this->modelName, 0, -4), $stub);
+        $stub = str_replace('{{modelName}}', $this->removeFileExtension($this->modelName), $stub);
         $stub = str_replace('{{className}}', $this->controllerName, $stub);
 
         $stub = str_replace('{{requestStoreNamespace}}', $namespace, $stub);
-        $stub = str_replace('{{requestStoreName}}', substr($this->requestStoreName, 0, -4), $stub);
+        $stub = str_replace('{{requestStoreName}}', $this->removeFileExtension($this->requestStoreName), $stub);
 
         $stub = str_replace('{{requestUpdateNamespace}}', $namespace, $stub);
-        $stub = str_replace('{{requestUpdateName}}', substr($this->requestUpdateName, 0, -4), $stub);
+        $stub = str_replace('{{requestUpdateName}}', $this->removeFileExtension($this->requestUpdateName), $stub);
 
         $stub = str_replace('{{modelNameVariabel}}', camel_case($this->entity), $stub);
 
@@ -533,7 +532,7 @@ class EntityMake extends Command
     {
         $stub = $this->files->get(__DIR__.'/stubs/model.factory.stub');
 
-        $stub = str_replace('{{modelName}}', substr($this->modelName, 0, -4), $stub);
+        $stub = str_replace('{{modelName}}', $this->removeFileExtension($this->modelName), $stub);
 
         $this->files->put($path, $stub);
 
@@ -594,7 +593,7 @@ class EntityMake extends Command
             }
             else {
                 $this->callSilent('make:seeder', [
-                    'name' => substr($seederTable, 0, -4)
+                    'name' => $this->removeFileExtension($seederTable)
                 ]);
 
                 $this->addToTable('Table Seeder', $seederTable);
@@ -641,7 +640,7 @@ class EntityMake extends Command
     {
         $stub = $this->files->get(__DIR__.'/stubs/seeder.dummy.stub');
 
-        $stub = str_replace('{{modelName}}', substr($this->modelName, 0, -4), $stub);
+        $stub = str_replace('{{modelName}}', $this->removeFileExtension($this->modelName), $stub);
         $stub = str_replace('{{className}}', $this->pluralizedEntity, $stub);
 
         $this->makeDirectory($path);
