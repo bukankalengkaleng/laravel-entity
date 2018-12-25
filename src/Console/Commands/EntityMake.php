@@ -134,8 +134,6 @@ class EntityMake extends Command
         $this->modelNamespace = 'App/'.config('entity.model.namespace');
         $this->modelFullPath  = $this->app_path.config('entity.model.namespace').'/'.$this->modelName;
 
-        // dd($this->modelNamespace, $this->modelFullPath);
-
         if ($this->files->exists($this->modelFullPath)) {
             $this->error('Model already exists: '.$this->modelNamespace.'/'.$this->modelName);
 
