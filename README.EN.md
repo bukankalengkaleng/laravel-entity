@@ -29,7 +29,7 @@ blablabla..
 
 ## Roadmap
 
-All planning goes to [Roadmap]((https://github.com/bukankalengkaleng/laravel-entity/blob/master/ROADMAP.md)) file.
+All planning goes to [Roadmap](https://github.com/bukankalengkaleng/laravel-entity/blob/master/ROADMAP.md) file.
 
 ## Contributing
 
