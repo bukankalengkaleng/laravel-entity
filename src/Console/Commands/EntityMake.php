@@ -131,10 +131,9 @@ class EntityMake extends Command
         $modelChoice = '';
         $this->modelName = $this->entity;
         $this->modelNamespace = 'Models/' . $this->modelName;
+        $this->modelPath = base_path() . '/app/' . $this->modelNamespace . '.php';
 
-        if ($this->files->exists(
-            $this->modelPath = base_path() . '/app/' . $this->modelNamespace . '.php')
-        ) {
+        if ($this->files->exists($this->modelPath)) {
             $this->error('Model already exists: ' . $this->modelNamespace . '.php');
 
             $modelChoice = $this->choice('What should we do?', [
@@ -143,7 +142,7 @@ class EntityMake extends Command
                 'Abort'
             ]);
         } else {
-            $this->files->makeDirectory(base_path() . '/app/Models');
+            $this->makeDirectory($this->modelPath);
 
             $modelChoice = 'No model';
 
@@ -220,7 +219,7 @@ class EntityMake extends Command
             $this->requestUpdateName = $this->entity . 'Update';
 
             switch (strtolower($this->namespace)) {
-                case 'both':
+                case 'admin and frontend':
                     /** Store Request on Admin namespace */
 
                     if ($this->files->exists(
@@ -384,7 +383,7 @@ class EntityMake extends Command
             $this->controllerName = $this->entity . 'Controller';
 
             switch (strtolower($this->namespace)) {
-                case 'both':
+                case 'admin and frontend':
                     /** Admin's Controller */
 
                     if ($this->files->exists(
@@ -702,6 +701,7 @@ class EntityMake extends Command
      */
     protected function makeDirectory($path)
     {
+        dump($path, dirname($path), $this->files->isDirectory(dirname($path)));
         if (! $this->files->isDirectory(dirname($path))) {
             $this->files->makeDirectory(dirname($path), 0777, true, true);
         }
