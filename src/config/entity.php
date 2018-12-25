@@ -28,10 +28,12 @@ return [
 
         /**
          * Set a base model for your entity
-         * Set to 'Illuminate\Database\Eloquent\Model' to have a default Laravel base model
+         * If set to 'false' then your entity model will use Laravel default base model
          *
          */
-        'base' => 'Illuminate\Database\Eloquent\Model',
+        'should_use_default_base' => true,
+        'custom_base_directory'   => '/app/',
+        'custom_base_name'        => 'CustomModel',
     ],
 
     /**
