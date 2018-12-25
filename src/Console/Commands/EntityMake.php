@@ -65,6 +65,8 @@ class EntityMake extends Command
      */
     public function handle()
     {
+        $this->line('');
+
         if ($this->option('all')) {
             $this->input->setOption('controller', true);
             $this->input->setOption('dummy', true);
@@ -75,8 +77,6 @@ class EntityMake extends Command
             $this->input->setOption('seeder', true);
             $this->input->setOption('test', true);
         }
-
-        $this->copyright();
 
         $this->comment('[START] Creating new entity.....');
 
@@ -794,18 +794,5 @@ class EntityMake extends Command
     protected function removeFileExtension($filename)
     {
         return substr($filename, 0, -4);
-    }
-
-    /**
-     * Command's copyright'
-     *
-     * @return mixed
-     */
-    protected function copyright()
-    {
-        $this->line('');
-        $this->line('"Laravel Entity\'s Make" artisan command');
-        $this->line('version 1.0 by @rkukuh');
-        $this->line('');
     }
 }
