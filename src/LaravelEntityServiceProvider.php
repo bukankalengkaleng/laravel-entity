@@ -21,6 +21,8 @@ class LaravelEntityServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/entity.php' => config_path('entity.php'),
         ], 'laravel-entity');
+
+        $this->mergeConfigFrom(__DIR__.'/../config/entity.php', 'entity');
     }
 
     /**

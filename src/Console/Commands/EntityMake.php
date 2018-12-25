@@ -67,6 +67,8 @@ class EntityMake extends Command
     {
         $this->line('');
 
+        dd(config('entity'));
+
         if ($this->option('all')) {
             $this->input->setOption('controller', true);
             $this->input->setOption('dummy', true);
