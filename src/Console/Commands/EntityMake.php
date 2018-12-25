@@ -702,7 +702,6 @@ class EntityMake extends Command
      */
     protected function makeDirectory($path)
     {
-        dump($path, dirname($path), $this->files->isDirectory(dirname($path)));
         if (! $this->files->isDirectory(dirname($path))) {
             $this->files->makeDirectory(dirname($path), 0777, true, true);
         }
