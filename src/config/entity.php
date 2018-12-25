@@ -20,7 +20,7 @@ return [
     'model' => [
 
         /**
-         * The directory where your models will resides, also act as their namespace.
+         * The entity's model namespace.
          *
          */
         'namespace' => 'Models',    // output: namespace App\Models;
