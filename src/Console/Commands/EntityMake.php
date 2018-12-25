@@ -143,6 +143,8 @@ class EntityMake extends Command
                 'Abort'
             ]);
         } else {
+            $this->files->makeDirectory(base_path() . '/app/Models');
+
             $modelChoice = 'No model';
 
             return $modelChoice;
