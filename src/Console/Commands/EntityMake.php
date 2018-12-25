@@ -11,7 +11,7 @@ class EntityMake extends Command
     protected $entity;
     protected $namespace;
     protected $modelName;
-    protected $modelPath;
+    protected $modelFullPath;
     protected $modelNamespace;
     protected $controllerName;
     protected $pluralizedEntity;
@@ -92,7 +92,7 @@ class EntityMake extends Command
                 break;
 
             case 'Use existing model':
-                $this->line('Model already exists: '.$this->modelNamespace.'.php');
+                $this->line('Model already exists: '.$this->modelNamespace.'/'.$this->modelName);
 
                 $this->makeMigration();
                 $this->makeRequest();
@@ -132,12 +132,12 @@ class EntityMake extends Command
         $modelChoice = '';
         $this->modelName = $this->entity.'.php';
         $this->modelNamespace = 'App/'.config('entity.model.namespace');
-        $this->modelPath = $this->app_path.config('entity.model.namespace').'/'.$this->modelName;
+        $this->modelFullPath  = $this->app_path.config('entity.model.namespace').'/'.$this->modelName;
 
-        // dd($this->modelNamespace, $this->modelPath);
+        // dd($this->modelNamespace, $this->modelFullPath);
 
-        if ($this->files->exists($this->modelPath)) {
-            $this->error('Model already exists: '.$this->modelPath);
+        if ($this->files->exists($this->modelFullPath)) {
+            $this->error('Model already exists: '.$this->modelNamespace.'/'.$this->modelName);
 
             $modelChoice = $this->choice('What should we do?', [
                 'Overwrite existing model',
@@ -145,7 +145,7 @@ class EntityMake extends Command
                 'Abort'
             ]);
         } else {
-            $this->makeDirectory($this->modelPath);
+            $this->makeDirectory($this->modelFullPath);
 
             $modelChoice = 'No model';
 
@@ -162,9 +162,9 @@ class EntityMake extends Command
      */
     protected function makeModel()
     {
-        $this->compileModelStub($this->modelPath);
+        $this->compileModelStub($this->modelFullPath);
 
-        $this->addToTable('Model', 'app/'.config('entity.model.namespace').'/'.$this->modelName);
+        $this->addToTable('Model', $this->modelNamespace.'/'.$this->modelName);
 
         $this->info($this->data['artefact'].' created.');
     }
