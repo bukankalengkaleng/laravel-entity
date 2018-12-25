@@ -196,8 +196,8 @@ class EntityMake extends Command
             $migration = 'create_'.snake_case($this->pluralizedEntity).'_table';
 
             $this->callSilent('make:migration', [
-                'name' => $migration,
-                '--create' => snake_case($this->pluralizedEntity),
+                'name'      => $migration,
+                '--create'  => snake_case($this->pluralizedEntity),
             ]);
 
             $this->addToTable('Migration', $migration.'.php');
