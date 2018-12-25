@@ -18,6 +18,10 @@ class LaravelEntityServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([EntityMake::class]);
         }
+
+        $this->publishes([
+            __DIR__.'/path/to/config/entity.php' => config_path('entity.php'),
+        ]);
     }
 
     /**
