@@ -27,6 +27,10 @@ In Laravel 5.5 the service provider will automatically get registered. In older 
 
 blablabla..
 
+## Roadmap
+
+All planning goes to [Roadmap]((https://github.com/bukankalengkaleng/laravel-entity/blob/master/ROADMAP.md)) file.
+
 ## Contributing
 
 1. Send PR

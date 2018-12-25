@@ -27,6 +27,10 @@ Laravel v5.5 dan keatas akan otomatis meregistrasi package ini. Jika kamu menggu
 
 blablabla..
 
+## Roadmap
+
+Untuk mengetahui rencana kedepan package ini silahkan membaca [Roadmap]((https://github.com/bukankalengkaleng/laravel-entity/blob/master/ROADMAP.md)).
+
 ## Kontribusi
 
 1. Kirim PR
