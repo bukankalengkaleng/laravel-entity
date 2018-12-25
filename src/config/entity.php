@@ -4,7 +4,7 @@ return [
     /**
      * NAMESPACE
      * A configuration for the entity's Form Requests' and Controllers' namespace,
-     * when using argument '--namespace=Both'
+     * when using argument: '--namespace=Both'
      *
      */
     'namespace' => [

@@ -215,77 +215,83 @@ class EntityMake extends Command
     {
         if ($this->option('request')) {
 
-            $this->requestStoreName  = $this->entity.'Store';
-            $this->requestUpdateName = $this->entity.'Update';
+            $this->requestStoreName  = $this->entity.'Store.php';
+            $this->requestUpdateName = $this->entity.'Update.php';
+
+            $formRequestPath = app_path('/app/Http/Requests');
+            $backendPath  = $formRequestPath.'/'.config('entity.namespace.backend');
+            $frontendPath = $formRequestPath.'/'.config('entity.namespace.frontend');
+
+            $fileExistsMessage = 'Form Request already exists:';
 
             switch (strtolower($this->namespace)) {
                 case 'both':
-                    /** Store Request on Admin namespace */
+                    /** Store Request on Backend namespace */
 
                     if ($this->files->exists(
-                        $path = base_path().'/app/Http/Requests/Admin/'.$this->requestStoreName.'.php')
+                        $path = $backendPath.'/'.$this->requestStoreName)
                     ) {
                         $this->input->setOption('request', false);
 
-                        $this->line('Form Request already exists: Admin/'.$this->requestStoreName.'.php');
+                        $this->line($fileExistsMessage.' '.config('entity.namespace.backend').'/'.$this->requestStoreName);
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => 'Admin/'.$this->requestStoreName
+                            'name' => config('entity.namespace.backend').'/'.substr($this->requestStoreName, 0, -4)
                         ]);
 
-                        $this->addToTable('Form Request', 'Admin/'.$this->requestStoreName.'.php');
+                        $this->addToTable('Form Request', config('entity.namespace.backend').'/'.$this->requestStoreName);
                     }
 
-                    /** Update Request on Admin namespace */
+                    /** Update Request on Backend namespace */
 
                     if ($this->files->exists(
-                        $path = base_path().'/app/Http/Requests/Admin/'.$this->requestUpdateName.'.php')
+                        $path = $backendPath.'/'.$this->requestUpdateName)
                     ) {
                         $this->input->setOption('request', false);
 
-                        $this->line('Form Request already exists: Admin/'.$this->requestUpdateName.'.php');
+                        $this->line($fileExistsMessage.' '.config('entity.namespace.backend').'/'.$this->requestUpdateName);
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => 'Admin/'.$this->requestUpdateName
+                            'name' => config('entity.namespace.backend').'/'.substr($this->requestUpdateName, 0, -4)
                         ]);
 
-                        $this->addToTable('Form Request', 'Admin/'.$this->requestUpdateName.'.php');
+                        $this->addToTable('Form Request', config('entity.namespace.backend').'/'.$this->requestUpdateName);
                     }
 
                     /** Store Request on Frontend namespace */
 
                     if ($this->files->exists(
-                        $path = base_path().'/app/Http/Requests/Frontend/'.$this->requestStoreName.'.php')
+                        $path = $frontendPath.'/'.$this->requestStoreName)
                     ) {
                         $this->input->setOption('request', false);
 
-                        $this->line('Form Request already exists: Frontend/'.$this->requestStoreName.'.php');
+                        $this->line($fileExistsMessage.' '.config('entity.namespace.frontend').'/'.$this->requestStoreName);
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => 'Frontend/'.$this->requestStoreName
+                            'name' => config('entity.namespace.frontend').'/'.substr($this->requestStoreName, 0, -4)
                         ]);
 
-                        $this->addToTable('Form Request', 'Frontend/'.$this->requestStoreName.'.php');
+                        $this->addToTable('Form Request', config('entity.namespace.frontend').'/'.$this->requestStoreName);
                     }
 
                     /** Update Request on Frontend namespace */
 
                     if ($this->files->exists(
-                        $path = base_path().'/app/Http/Requests/Frontend/'.$this->requestUpdateName.'.php')
+                        $path = $frontendPath.'/'.$this->requestUpdateName)
                     ) {
                         $this->input->setOption('request', false);
 
-                        $this->line('Form Request already exists: Frontend/'.$this->requestUpdateName.'.php');
+                        $this->line($fileExistsMessage.' '.config('entity.namespace.frontend').'/'.$this->requestUpdateName);
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => 'Frontend/'.$this->requestUpdateName
+                            'name' => config('entity.namespace.frontend').'/'.substr($this->requestUpdateName, 0, -4)
                         ]);
 
-                        $this->addToTable('Form Request', 'Frontend/'.$this->requestUpdateName.'.php');
+                        $this->addToTable('Form Request', config('entity.namespace.frontend').'/'.$this->requestUpdateName);
                     }
 
                     break;
@@ -294,35 +300,35 @@ class EntityMake extends Command
                     /** Store Request */
 
                     if ($this->files->exists(
-                        $path = base_path().'/app/Http/Requests/'.$this->requestStoreName.'.php')
+                        $path = $formRequestPath.'/'.$this->requestStoreName)
                     ) {
                         $this->input->setOption('request', false);
 
-                        $this->line('Form Request already exists: '.$this->requestStoreName.'.php');
+                        $this->line($fileExistsMessage.' '.$this->requestStoreName);
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => $this->requestStoreName
+                            'name' => substr($this->requestStoreName, 0, -4)
                         ]);
 
-                        $this->addToTable('Form Request', $this->requestStoreName.'.php');
+                        $this->addToTable('Form Request', $this->requestStoreName);
                     }
 
                     /** Update Request */
 
                     if ($this->files->exists(
-                        $path = base_path().'/app/Http/Requests/'.$this->requestUpdateName.'.php')
+                        $path = $formRequestPath.'/'.$this->requestUpdateName)
                     ) {
                         $this->input->setOption('request', false);
 
-                        $this->line('Form Request already exists: '.$this->requestUpdateName.'.php');
+                        $this->line($fileExistsMessage.' '.$this->requestUpdateName);
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => $this->requestUpdateName
+                            'name' => substr($this->requestUpdateName, 0, -4)
                         ]);
 
-                        $this->addToTable('Form Request', $this->requestUpdateName.'.php');
+                        $this->addToTable('Form Request', $this->requestUpdateName);
                     }
 
                     break;
@@ -331,35 +337,35 @@ class EntityMake extends Command
                     /** Store Request */
 
                     if ($this->files->exists(
-                        $path = base_path().'/app/Http/Requests/'.$this->namespace.'/'.$this->requestStoreName.'.php')
+                        $path = $formRequestPath.'/'.$this->namespace.'/'.$this->requestStoreName)
                     ) {
                         $this->input->setOption('request', false);
 
-                        $this->line('Form Request already exists: '.$this->namespace.'/'.$this->requestStoreName.'.php');
+                        $this->line($fileExistsMessage.' '.$this->namespace.'/'.$this->requestStoreName);
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => $this->namespace.'/'.$this->requestStoreName
+                            'name' => $this->namespace.'/'.substr($this->requestStoreName, 0, -4)
                         ]);
 
-                        $this->addToTable('Form Request', $this->namespace.'/'.$this->requestStoreName.'.php');
+                        $this->addToTable('Form Request', $this->namespace.'/'.$this->requestStoreName);
                     }
 
                     /** Frontend Request */
 
                     if ($this->files->exists(
-                        $path = base_path().'/app/Http/Requests/'.$this->namespace.'/'.$this->requestUpdateName.'.php')
+                        $path = $formRequestPath.'/'.$this->namespace.'/'.$this->requestUpdateName)
                     ) {
                         $this->input->setOption('request', false);
 
-                        $this->line('Form Request already exists: '.$this->namespace.'/'.$this->requestUpdateName.'.php');
+                        $this->line($fileExistsMessage.' '.$this->namespace.'/'.$this->requestUpdateName);
                     }
                     else {
                         $this->callSilent('make:request', [
-                            'name' => $this->namespace.'/'.$this->requestUpdateName
+                            'name' => $this->namespace.'/'.substr($this->requestUpdateName, 0, -4)
                         ]);
 
-                        $this->addToTable('Form Request', $this->namespace.'/'.$this->requestUpdateName.'.php');
+                        $this->addToTable('Form Request', $this->namespace.'/'.$this->requestUpdateName);
                     }
 
                     break;
