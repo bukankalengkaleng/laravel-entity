@@ -1,4 +1,5 @@
 # ROADMAP
 
-- [ ] `config/entity.php` file
+- [x] `config/entity.php` file
 - [ ] `EntityDestroy.php` command
+- [ ] Be able to create pivot entity
