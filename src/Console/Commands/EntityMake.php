@@ -386,70 +386,70 @@ class EntityMake extends Command
     {
         if ($this->option('controller')) {
 
-            $this->controllerName = $this->entity.'Controller';
+            $this->controllerName = $this->entity.'Controller.php';
+
+            $controllerPath = app_path('Http/Controllers');
+            $backendPath  = $controllerPath.'/'.config('entity.namespace.backend');
+            $frontendPath = $controllerPath.'/'.config('entity.namespace.frontend');
+
+            $fileExistsMessage = 'Controller already exists:';
 
             switch (strtolower($this->namespace)) {
                 case 'both':
-                    /** Admin's Controller */
+                    /** Backend's Controller */
 
-                    if ($this->files->exists(
-                            $path = base_path().'/app/Http/Controllers/Admin/'.$this->controllerName.'.php')
-                    ) {
+                    if ($this->files->exists($path = $backendPath.'/'.$this->controllerName)) {
                         $this->input->setOption('controller', false);
 
-                        $this->line('Controller already exists: Admin/'.$this->controllerName.'.php');
+                        $this->line($fileExistsMessage.' '.config('entity.namespace.backend').'/'.$this->controllerName);
                     }
                     else {
-                        $this->compileControllerStub($path, 'Admin');
+                        $this->compileControllerStub($path, config('entity.namespace.backend'));
 
-                        $this->addToTable('Controller', 'Admin/'.$this->controllerName.'.php');
+                        $this->addToTable('Controller', config('entity.namespace.backend').'/'.$this->controllerName);
                     }
 
                     /** Frontend's Controller */
 
-                    if ($this->files->exists(
-                        $path = base_path().'/app/Http/Controllers/Frontend/'.$this->controllerName.'.php')
-                    ) {
+                    if ($this->files->exists($path = $frontendPath.'/'.$this->controllerName)) {
                         $this->input->setOption('controller', false);
 
-                        $this->line('Controller already exists: Frontend/'.$this->controllerName.'.php');
+                        $this->line($fileExistsMessage.' '.config('entity.namespace.frontend').'/'.$this->controllerName);
                     }
                     else {
-                        $this->compileControllerStub($path, 'Frontend');
+                        $this->compileControllerStub($path, config('entity.namespace.frontend'));
 
-                        $this->addToTable('Controller', 'Frontend/'.$this->controllerName.'.php');
+                        $this->addToTable('Controller', config('entity.namespace.frontend').'/'.$this->controllerName);
                     }
 
                     break;
 
                 case 'none':
-                    if ($this->files->exists(
-                            $path = base_path().'/app/Http/Controllers/'.$this->controllerName.'.php')
-                    ) {
+                    if ($this->files->exists($path = $this->controllerName)) {
                         $this->input->setOption('controller', false);
 
-                        $this->line('Controller already exists: '.$this->controllerName.'.php');
+                        $this->line($fileExistsMessage.' '.$this->controllerName);
                     }
                     else {
                         $this->compileControllerStub($path);
 
-                        $this->addToTable('Controller', $this->controllerName.'.php');
+                        $this->addToTable('Controller', $this->controllerName);
                     }
 
                     break;
 
                 default:
                     if ($this->files->exists(
-                        $path = base_path().'/app/Http/Controllers/'.$this->namespace.'/'.$this->controllerName.'.php')
+                        $path = $this->namespace.'/'.$this->controllerName)
                     ) {
                         $this->input->setOption('controller', false);
 
-                        $this->line('Controller already exists: '.$this->namespace.'/'.$this->controllerName.'.php');
+                        $this->line($fileExistsMessage.' '.$this->namespace.'/'.$this->controllerName);
                     }
                     else {
                         $this->compileControllerStub($path, $this->namespace);
 
-                        $this->addToTable('Controller', $this->namespace.'/'.$this->controllerName.'.php');
+                        $this->addToTable('Controller', $this->namespace.'/'.$this->controllerName);
                     }
 
                     break;
@@ -478,7 +478,7 @@ class EntityMake extends Command
 
         $stub = str_replace('{{classNamespace}}', $namespace, $stub);
         $stub = str_replace('{{modelName}}', $this->removeFileExtension($this->modelName), $stub);
-        $stub = str_replace('{{className}}', $this->controllerName, $stub);
+        $stub = str_replace('{{className}}', $this->removeFileExtension($this->controllerName), $stub);
 
         $stub = str_replace('{{requestStoreNamespace}}', $namespace, $stub);
         $stub = str_replace('{{requestStoreName}}', $this->removeFileExtension($this->requestStoreName), $stub);
