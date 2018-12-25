@@ -603,10 +603,9 @@ class EntityMake extends Command
         if ($this->option('dummy')) {
 
             $seederDummy = $this->pluralizedEntity;
+            $path = base_path() . '/database/seeds/dummies/' . $seederDummy . '.php';
 
-            if ($this->files->exists(
-                $path = base_path() . '/database/seeds/dummies/' . $seederDummy . '.php')
-            ) {
+            if ($this->files->exists($path)) {
                 $this->input->setOption('dummy', false);
 
                 $this->line('Dummy Seeder already exists: seeds/dummies/' . $seederDummy . '.php');
@@ -635,6 +634,8 @@ class EntityMake extends Command
 
         $stub = str_replace('{{modelName}}', $this->modelName, $stub);
         $stub = str_replace('{{className}}', $this->pluralizedEntity, $stub);
+
+        $this->makeDirectory($path);
 
         $this->files->put($path, $stub);
 
