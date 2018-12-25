@@ -32,4 +32,13 @@ return [
          */
         'base' => 'Illuminate\Database\Eloquent\Model',
     ],
+
+    /**
+     * DUMMY SEEDER
+     * Dummy seeder actually a seeder generated from Model's factory
+     * It purpose is to make a dummy (obviously) data
+     */
+    'dummy' => [
+        'directory' => 'dummies',   // /database/seeds/dummies/
+    ],
 ];
