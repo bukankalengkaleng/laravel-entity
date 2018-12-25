@@ -29,7 +29,7 @@ Laravel v5.5 dan keatas akan otomatis meregistrasi package ini. Jika kamu menggu
 
 ### Langkah 2/2 (opsional)
 
-Kamu bisa mem-*publish* file dari package ini:
+Kamu bisa mem-*publish* file (`config`) dari package ini dengan cara:
 
 `php artisan vendor:publish --tag="laravel-entity"`
 
