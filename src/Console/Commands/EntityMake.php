@@ -218,7 +218,7 @@ class EntityMake extends Command
             $this->requestStoreName  = $this->entity.'Store.php';
             $this->requestUpdateName = $this->entity.'Update.php';
 
-            $formRequestPath = app_path('/app/Http/Requests');
+            $formRequestPath = app_path('Http/Requests');
             $backendPath  = $formRequestPath.'/'.config('entity.namespace.backend');
             $frontendPath = $formRequestPath.'/'.config('entity.namespace.frontend');
 
@@ -481,10 +481,10 @@ class EntityMake extends Command
         $stub = str_replace('{{className}}', $this->controllerName, $stub);
 
         $stub = str_replace('{{requestStoreNamespace}}', $namespace, $stub);
-        $stub = str_replace('{{requestStoreName}}', $this->requestStoreName, $stub);
+        $stub = str_replace('{{requestStoreName}}', substr($this->requestStoreName, 0, -4), $stub);
 
         $stub = str_replace('{{requestUpdateNamespace}}', $namespace, $stub);
-        $stub = str_replace('{{requestUpdateName}}', $this->requestUpdateName, $stub);
+        $stub = str_replace('{{requestUpdateName}}', substr($this->requestUpdateName, 0, -4), $stub);
 
         $stub = str_replace('{{modelNameVariabel}}', camel_case($this->entity), $stub);
 
