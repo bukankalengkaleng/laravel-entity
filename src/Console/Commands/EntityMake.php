@@ -193,11 +193,11 @@ class EntityMake extends Command
         if ($this->option('migration')) {
 
             $this->pluralizedEntity = str_plural($this->entity);
-            $migration = 'create_'.strtolower($this->pluralizedEntity).'_table';
+            $migration = 'create_'.snake_case($this->pluralizedEntity).'_table';
 
             $this->callSilent('make:migration', [
                 'name' => $migration,
-                '--create' => strtolower($this->pluralizedEntity),
+                '--create' => snake_case($this->pluralizedEntity),
             ]);
 
             $this->addToTable('Migration', $migration.'.php');
@@ -579,18 +579,18 @@ class EntityMake extends Command
             $seederTable = ($this->pluralizedEntity).'TableSeeder';
 
             if ($this->files->exists(
-                $path = base_path().'/database/seeds/'.$seederTable.'.php')
+                $path = database_path('seeds/'.$seederTable.'.php'))
             ) {
                 $this->input->setOption('seeder', false);
 
-                $this->line('Table Seeder already exists: seeds/'.$seederTable.'.php');
+                $this->line('Table Seeder already exists: database/seeds/'.$seederTable.'.php');
             }
             else {
                 $this->callSilent('make:seeder', [
                     'name' => $seederTable
                 ]);
 
-                $this->addToTable('Table Seeder', 'seeds/'.$seederTable.'.php');
+                $this->addToTable('Table Seeder', 'database/seeds/'.$seederTable.'.php');
 
                 $this->info($this->data['artefact'].' created.');
 
@@ -603,17 +603,17 @@ class EntityMake extends Command
         if ($this->option('dummy')) {
 
             $seederDummy = $this->pluralizedEntity;
-            $path = base_path().'/database/seeds/dummies/'.$seederDummy.'.php';
+            $path = database_path('seeds/dummies/'.$seederDummy.'.php');
 
             if ($this->files->exists($path)) {
                 $this->input->setOption('dummy', false);
 
-                $this->line('Dummy Seeder already exists: seeds/dummies/'.$seederDummy.'.php');
+                $this->line('Dummy Seeder already exists: database/seeds/dummies/'.$seederDummy.'.php');
             }
             else {
                 $this->compileDummySeederStub($path);
 
-                $this->addToTable('Dummy Seeder', 'seeds/dummies/'.$seederDummy.'.php');
+                $this->addToTable('Dummy Seeder', 'database/seeds/dummies/'.$seederDummy.'.php');
 
                 $this->info($this->data['artefact'].' created.');
 
