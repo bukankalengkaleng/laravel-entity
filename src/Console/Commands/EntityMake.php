@@ -553,8 +553,8 @@ class EntityMake extends Command
             }
 
             $this->callSilent('make:policy', [
-                'name' => $policy,
-                '--model' => $this->modelNamespace,
+                'name'    => $policy,
+                '--model' => config('entity.model.namespace').'/'.$this->entity,
             ]);
 
             $this->addToTable('Policy', $policy.'.php');
