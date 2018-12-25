@@ -1,6 +1,19 @@
 <?php
 
 return [
+    /**
+     * NAMESPACE
+     * A configuration for the entity's:
+     * - Form Requests
+     * - Controllers
+     *
+     */
+
+    /**
+     * MODEL
+     * A configuration for the entity's model
+     *
+     */
     'model' => [
 
         /**
