@@ -29,7 +29,7 @@ In Laravel 5.5 the service provider will automatically get registered. In older 
 
 ### Step 2/2 (optional)
 
-You can publish this package file with:
+You can publish this package (`config`) file with:
 
 `php artisan vendor:publish --tag="laravel-entity"`
 
