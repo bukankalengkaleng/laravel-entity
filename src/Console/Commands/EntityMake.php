@@ -4,6 +4,7 @@ namespace BukanKalengKaleng\LaravelEntity\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use function Spatie\SslCertificate\substr;
 
 class EntityMake extends Command
 {
@@ -779,6 +780,14 @@ class EntityMake extends Command
         $this->data['location'] = $location;
 
         array_push($this->tableContents, $this->data);
+    }
+
+    /**
+     * Remove '.php' extension from file name
+     */
+    protected function removeFileExtension($filename)
+    {
+        return substr($filename, 0, -4);
     }
 
     /**
