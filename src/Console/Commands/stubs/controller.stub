@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\{{classNamespace}};
 
-use App\Models\{{modelName}};
+use App\{{modelNamespace}}\{{modelName}};
 use App\Http\Controllers\Controller;
 use App\Http\Requests\{{requestStoreNamespace}}\{{requestStoreName}};
 use App\Http\Requests\{{requestUpdateNamespace}}\{{requestUpdateName}};

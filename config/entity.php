@@ -23,7 +23,7 @@ return [
          * The entity's model namespace.
          *
          */
-        'namespace' => 'Models',    // output: namespace App\Models;
+        'namespace' => 'Modelmu',    // output: namespace App\Models;
 
         /**
          * Set a base model for your entity

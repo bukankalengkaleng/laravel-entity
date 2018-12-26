@@ -199,6 +199,7 @@ class EntityMake extends Command
         $stub = $this->files->get(__DIR__.'/stubs/model.stub');
 
         $stub = str_replace('{{class}}', $this->entity, $stub);
+        $stub = str_replace('{{modelNamespace}}', config('entity.model.namespace'), $stub);
 
         $this->files->put($path, $stub);
 
@@ -505,7 +506,10 @@ class EntityMake extends Command
         }
 
         $stub = str_replace('{{classNamespace}}', $namespace, $stub);
+
+        $stub = str_replace('{{modelNamespace}}', config('entity.model.namespace'), $stub);
         $stub = str_replace('{{modelName}}', $this->removeFileExtension($this->modelName), $stub);
+
         $stub = str_replace('{{className}}', $this->removeFileExtension($this->controllerName), $stub);
 
         $stub = str_replace('{{requestStoreNamespace}}', $namespace, $stub);
@@ -560,6 +564,7 @@ class EntityMake extends Command
     {
         $stub = $this->files->get(__DIR__.'/stubs/model.factory.stub');
 
+        $stub = str_replace('{{modelNamespace}}', config('entity.model.namespace'), $stub);
         $stub = str_replace('{{modelName}}', $this->removeFileExtension($this->modelName), $stub);
 
         $this->files->put($path, $stub);
@@ -671,7 +676,9 @@ class EntityMake extends Command
     {
         $stub = $this->files->get(__DIR__.'/stubs/seeder.dummy.stub');
 
+        $stub = str_replace('{{modelNamespace}}', config('entity.model.namespace'), $stub);
         $stub = str_replace('{{modelName}}', $this->removeFileExtension($this->modelName), $stub);
+
         $stub = str_replace('{{className}}', $this->pluralizedEntity, $stub);
 
         $this->makeDirectory($path);

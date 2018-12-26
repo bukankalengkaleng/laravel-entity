@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\{{modelName}};
+use App\{{modelNamespace}}\{{modelName}};
 use Illuminate\Database\Seeder;
 
 class {{className}} extends Seeder
