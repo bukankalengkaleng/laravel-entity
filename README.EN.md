@@ -51,7 +51,7 @@ In Laravel 5.5 the service provider will automatically get registered. In older 
 
     <img src="screenshots/01.png" width="60%">
 
-The entity's namespaces (`Admin` and `Frontend`) are configurable via the `config/entity.php` file, which you can publish:
+The entity's namespaces (`Admin` and `Frontend`) are configurable via the `config/entity.php` file, which you have to publish first:
 
 ```
 php artisan vendor:publish --tag="laravel-entity"

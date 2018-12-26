@@ -18,7 +18,7 @@ Membuat entitas (contoh: *Product, Employee*, dsb) yang lengkap (ada *Model, Fac
 composer require bukankalengkaleng/laravel-entity
 ```
 
-Laravel v5.5 dan keatas akan otomatis meregistrasi package ini. Jika kamu menggunakan versi dibawah itu, kamu perlu melakukannya manual dalam file `config/app.php`:
+Laravel v5.5 dan keatas akan otomatis meregistrasi package ini. Jika kamu menggunakan versi dibawah itu, kamu perlu melakukannya secara manual dalam file `config/app.php`:
 
 ```php
 'providers' => [
@@ -51,7 +51,7 @@ Laravel v5.5 dan keatas akan otomatis meregistrasi package ini. Jika kamu menggu
 
     <img src="screenshots/01.png" width="60%">
 
-Namespaces entitas (`Admin` dan `Frontend`) dapat diatur dalam file `config/entity.php` yang bisa kamu *publish* dengan cara:
+Namespaces entitas (`Admin` dan `Frontend`) dapat diatur dalam file `config/entity.php` yang harus kamu publish dahulu dengan cara:
 
 ```
 php artisan vendor:publish --tag="laravel-entity"
