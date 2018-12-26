@@ -183,7 +183,7 @@ class EntityMake extends Command
             $this->compileModelStub($this->modelFullPath);
         }
         else {
-            // TODO: Create custom base model, if not exists
+            $this->makeCustomBaseModel();
 
             $this->compileCustomModelStub($this->modelFullPath);
         }
@@ -191,6 +191,34 @@ class EntityMake extends Command
         $this->addToTable('Model', $this->modelNamespace.'/'.$this->modelName);
 
         $this->info($this->data['artefact'].' created.');
+    }
+
+    /**
+     * Make custom base model
+     *
+     * @return void
+     */
+    protected function makeCustomBaseModel()
+    {
+        $path = app_path(config('entity.model.custom_base_directory'));
+        $file = $path.'/'.config('entity.model.custom_base_name').'.php';
+
+        if (! $this->files->exists($file)) {
+            $stub = $this->files->get(__DIR__.'/stubs/model.base.custom.stub');
+
+            $classNamepace = 'App';
+
+            if (! empty(config('entity.model.custom_base_directory'))) {
+                $classNamepace .= '\\'.config('entity.model.custom_base_directory');
+            }
+
+            $stub = str_replace('{{classNamespace}}', $classNamepace, $stub);
+            $stub = str_replace('{{className}}', config('entity.model.custom_base_name'), $stub);
+
+            $this->makeDirectory($file);
+
+            $this->files->put($file, $stub);
+        }
     }
 
     /**

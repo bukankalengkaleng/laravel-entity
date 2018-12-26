@@ -1,0 +1,24 @@
+<?php
+
+namespace {{classNamespace}};
+
+use App\Traits\UuidKey;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class {{className}} extends Model
+{
+    use UuidKey;
+    use SoftDeletes;
+
+    protected $hidden = ['id'];
+
+    protected $dates = ['deleted_at'];
+
+    /***************************************** OVERRIDE *******************************************/
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+}
