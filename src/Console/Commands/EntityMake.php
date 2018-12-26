@@ -80,7 +80,7 @@ class EntityMake extends Command
 
         $this->comment('[START] Creating new entity.....');
 
-        $this->entity    = $this->argument('name');
+        $this->entity    = $this->setEntityName($this->argument('name'));
         $this->namespace = $this->option('namespace');
 
         switch ($this->checkExistingModel()) {
@@ -126,6 +126,25 @@ class EntityMake extends Command
         }
     }
 
+    /**
+     * Set a proper entity name
+     *
+     * @param String $name
+     * @return void
+     */
+    protected function setEntityName($name) {
+        if ($this->argument('name') == strtolower($this->argument('name'))) {
+            return ucfirst($this->argument('name'));
+        }
+
+        return $this->argument('name');
+    }
+
+    /**
+     * Check for existing model
+     *
+     * @return void
+     */
     protected function checkExistingModel()
     {
         $modelChoice = '';
