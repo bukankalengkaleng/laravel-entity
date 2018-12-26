@@ -160,7 +160,8 @@ class EntityMake extends Command
                 'Use existing model',
                 'Abort'
             ]);
-        } else {
+        }
+        else {
             $this->makeDirectory($this->modelFullPath);
 
             $modelChoice = 'No model';
@@ -178,11 +179,13 @@ class EntityMake extends Command
      */
     protected function makeModel()
     {
-        $this->compileModelStub($this->modelFullPath);
+        if (config('entity.model.should_use_default_base') === true) {
+            $this->compileModelStub($this->modelFullPath);
 
-        $this->addToTable('Model', $this->modelNamespace.'/'.$this->modelName);
+            $this->addToTable('Model', $this->modelNamespace.'/'.$this->modelName);
 
-        $this->info($this->data['artefact'].' created.');
+            $this->info($this->data['artefact'].' created.');
+        }
     }
 
     /**
