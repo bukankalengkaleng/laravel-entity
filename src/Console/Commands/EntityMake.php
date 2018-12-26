@@ -198,8 +198,8 @@ class EntityMake extends Command
     {
         $stub = $this->files->get(__DIR__.'/stubs/model.stub');
 
-        $stub = str_replace('{{class}}', $this->entity, $stub);
-        $stub = str_replace('{{modelNamespace}}', config('entity.model.namespace'), $stub);
+        $stub = str_replace('{{className}}', $this->entity, $stub);
+        $stub = str_replace('{{classNamespace}}', config('entity.model.namespace'), $stub);
 
         $this->files->put($path, $stub);
 
