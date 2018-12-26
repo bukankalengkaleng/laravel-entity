@@ -27,12 +27,16 @@ return [
 
         /**
          * Set a base model for your entity
-         * If set to 'false' then your entity model will use Laravel default base model
+         * If set to 'true' then your entity model will use Laravel default base model
+         *
+         * The 'custom_base_directory' key is always prefixed by 'app/',
+         * so if you give it a 'MyDir' value, then your custom base model will created under:
+         * 'app/MyDir/MyBaseModel.php'
          *
          */
         'should_use_default_base' => true,
-        'custom_base_directory'   => '/app/',
-        'custom_base_name'        => 'CustomModel',
+        'custom_base_directory'   => '',
+        'custom_base_name'        => 'MyBaseModel',
     ],
 
     /**
