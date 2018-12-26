@@ -14,8 +14,6 @@ Membuat entitas (contoh: *Product, Employee*, dsb) yang lengkap (ada *Model, Fac
 
 ## Instalasi
 
-### Langkah 1/2
-
 `composer require bukankalengkaleng/laravel-entity`
 
 Laravel v5.5 dan keatas akan otomatis meregistrasi package ini. Jika kamu menggunakan versi dibawah itu, kamu perlu melakukannya manual dalam file `config/app.php`:
@@ -26,12 +24,6 @@ Laravel v5.5 dan keatas akan otomatis meregistrasi package ini. Jika kamu menggu
     BukanKalengKaleng\LaravelEntity\LaravelEntityServiceProvider::class,
 ];
 ```
-
-### Langkah 2/2 (opsional)
-
-Kamu bisa mem-*publish* file (`config`) dari package ini dengan cara:
-
-`php artisan vendor:publish --tag="laravel-entity"`
 
 ## Cara Menggunakan
 
@@ -51,6 +43,10 @@ Kamu bisa mem-*publish* file (`config`) dari package ini dengan cara:
     - app/Policies/**ProductPolicy.php**
     - app/tests/Feature/**ProductTest.php**
     - app/tests/Unit/**ProductTest.php**
+
+Namespaces entitas (`Admin` dan `Frontend`) dapat diatur dalam file `config/entity.php` yang bisa kamu *publish* dengan cara:
+
+`php artisan vendor:publish --tag="laravel-entity"`
 
 ## Roadmap
 
