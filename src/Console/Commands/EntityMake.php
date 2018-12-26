@@ -229,8 +229,8 @@ class EntityMake extends Command
                     /** Store Request on Backend namespace */
 
                     if ($this->files->exists(
-                        $path = $backendPath.'/'.$this->requestStoreName)
-                    ) {
+                        $path = $backendPath.'/'.$this->requestStoreName
+                    )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.config('entity.namespace.backend').'/'.$this->requestStoreName);
@@ -246,8 +246,8 @@ class EntityMake extends Command
                     /** Update Request on Backend namespace */
 
                     if ($this->files->exists(
-                        $path = $backendPath.'/'.$this->requestUpdateName)
-                    ) {
+                        $path = $backendPath.'/'.$this->requestUpdateName
+                    )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.config('entity.namespace.backend').'/'.$this->requestUpdateName);
@@ -263,8 +263,8 @@ class EntityMake extends Command
                     /** Store Request on Frontend namespace */
 
                     if ($this->files->exists(
-                        $path = $frontendPath.'/'.$this->requestStoreName)
-                    ) {
+                        $path = $frontendPath.'/'.$this->requestStoreName
+                    )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.config('entity.namespace.frontend').'/'.$this->requestStoreName);
@@ -280,8 +280,8 @@ class EntityMake extends Command
                     /** Update Request on Frontend namespace */
 
                     if ($this->files->exists(
-                        $path = $frontendPath.'/'.$this->requestUpdateName)
-                    ) {
+                        $path = $frontendPath.'/'.$this->requestUpdateName
+                    )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.config('entity.namespace.frontend').'/'.$this->requestUpdateName);
@@ -300,8 +300,8 @@ class EntityMake extends Command
                     /** Store Request */
 
                     if ($this->files->exists(
-                        $path = $formRequestPath.'/'.$this->requestStoreName)
-                    ) {
+                        $path = $formRequestPath.'/'.$this->requestStoreName
+                    )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.$this->requestStoreName);
@@ -317,8 +317,8 @@ class EntityMake extends Command
                     /** Update Request */
 
                     if ($this->files->exists(
-                        $path = $formRequestPath.'/'.$this->requestUpdateName)
-                    ) {
+                        $path = $formRequestPath.'/'.$this->requestUpdateName
+                    )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.$this->requestUpdateName);
@@ -337,8 +337,8 @@ class EntityMake extends Command
                     /** Store Request */
 
                     if ($this->files->exists(
-                        $path = $formRequestPath.'/'.$this->namespace.'/'.$this->requestStoreName)
-                    ) {
+                        $path = $formRequestPath.'/'.$this->namespace.'/'.$this->requestStoreName
+                    )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.$this->namespace.'/'.$this->requestStoreName);
@@ -354,8 +354,8 @@ class EntityMake extends Command
                     /** Frontend Request */
 
                     if ($this->files->exists(
-                        $path = $formRequestPath.'/'.$this->namespace.'/'.$this->requestUpdateName)
-                    ) {
+                        $path = $formRequestPath.'/'.$this->namespace.'/'.$this->requestUpdateName
+                    )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.$this->namespace.'/'.$this->requestUpdateName);
@@ -399,8 +399,8 @@ class EntityMake extends Command
                     /** Backend's Controller */
 
                     if ($this->files->exists(
-                        $path = $backendPath.'/'.$this->controllerName)
-                    ) {
+                        $path = $backendPath.'/'.$this->controllerName
+                    )) {
                         $this->input->setOption('controller', false);
 
                         $this->line($fileExistsMessage.' '.config('entity.namespace.backend').'/'.$this->controllerName);
@@ -414,8 +414,8 @@ class EntityMake extends Command
                     /** Frontend's Controller */
 
                     if ($this->files->exists(
-                        $path = $frontendPath.'/'.$this->controllerName)
-                    ) {
+                        $path = $frontendPath.'/'.$this->controllerName
+                    )) {
                         $this->input->setOption('controller', false);
 
                         $this->line($fileExistsMessage.' '.config('entity.namespace.frontend').'/'.$this->controllerName);
@@ -430,8 +430,8 @@ class EntityMake extends Command
 
                 case 'none':
                     if ($this->files->exists(
-                        $path = $this->controllerName)
-                    ) {
+                        $path = $this->controllerName
+                    )) {
                         $this->input->setOption('controller', false);
 
                         $this->line($fileExistsMessage.' '.$this->controllerName);
@@ -446,8 +446,8 @@ class EntityMake extends Command
 
                 default:
                     if ($this->files->exists(
-                        $path = $this->namespace.'/'.$this->controllerName)
-                    ) {
+                        $path = $this->namespace.'/'.$this->controllerName
+                    )) {
                         $this->input->setOption('controller', false);
 
                         $this->line($fileExistsMessage.' '.$this->namespace.'/'.$this->controllerName);
@@ -606,7 +606,7 @@ class EntityMake extends Command
 
                 $this->info($this->data['artefact'].' created.');
 
-                array_push($this->additionalSteps, 'Call the Table seeder in DatabaseSeeder');
+                array_push($this->additionalSteps, 'Call the Table Seeder in DatabaseSeeder');
             }
         }
 
@@ -626,6 +626,8 @@ class EntityMake extends Command
                 }
                 else {
                     $this->compileDummySeederStub($path);
+
+                    $this->makeDummyDataSeeder();
 
                     $this->addToTable('Dummy Seeder', config('entity.dummy.dummies').$seederDummy);
 
@@ -655,6 +657,22 @@ class EntityMake extends Command
         $this->files->put($path, $stub);
 
         return $this;
+    }
+
+    /**
+     * Make DummyDataSeeder, if not exists
+     *
+     * @return void
+     */
+    protected function makeDummyDataSeeder()
+    {
+        if (! $this->files->exists(
+            $path = database_path('seeds/DummyDataSeeder.php')
+        )) {
+            $stub = $this->files->get(__DIR__.'/stubs/dataseeder.dummy.stub');
+
+            $this->files->put($path, $stub);
+        }
     }
 
     /**
