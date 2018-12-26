@@ -1,0 +1,10 @@
+<?php
+
+namespace {{modelNamespace}};
+
+use {{customBaseDirectory}};
+
+class {{className}} extends {{customBaseName}}
+{
+    //
+}
