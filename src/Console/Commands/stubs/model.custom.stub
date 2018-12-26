@@ -2,7 +2,7 @@
 
 namespace App\{{modelNamespace}};
 
-use {{customBaseDirectory}};
+use App\{{customBaseDirectory}};
 
 class {{className}} extends {{customBaseName}}
 {
