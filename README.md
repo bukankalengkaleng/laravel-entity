@@ -36,7 +36,7 @@ Kamu bisa mem-*publish* file (`config`) dari package ini dengan cara:
 ## Cara Menggunakan
 
 1. `php artisan entity:make Product`
-1. Kamu akan dapati entitas **Product** yang lengkap:
+1. Kamu akan dapatkan entitas **Product** yang lengkap:
     - app/Models/**Product.php**
     - database/migrations/**create_products_table.php**
     - database/factories/**ProductFactory.php**
