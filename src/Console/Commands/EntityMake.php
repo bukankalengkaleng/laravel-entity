@@ -181,11 +181,16 @@ class EntityMake extends Command
     {
         if (config('entity.model.should_use_default_base') === true) {
             $this->compileModelStub($this->modelFullPath);
-
-            $this->addToTable('Model', $this->modelNamespace.'/'.$this->modelName);
-
-            $this->info($this->data['artefact'].' created.');
         }
+        else {
+            // TODO: Create custom base model, if not exists
+
+            $this->compileCustomModelStub($this->modelFullPath);
+        }
+
+        $this->addToTable('Model', $this->modelNamespace.'/'.$this->modelName);
+
+        $this->info($this->data['artefact'].' created.');
     }
 
     /**
@@ -200,6 +205,36 @@ class EntityMake extends Command
 
         $stub = str_replace('{{className}}', $this->entity, $stub);
         $stub = str_replace('{{classNamespace}}', config('entity.model.namespace'), $stub);
+
+        $this->files->put($path, $stub);
+
+        return $this;
+    }
+
+    /**
+     * Compile the Custom Model stub
+     *
+     * @param String $path
+     * @return void
+     */
+    protected function compileCustomModelStub($path)
+    {
+        $stub = $this->files->get(__DIR__.'/stubs/model.custom.stub');
+
+        $customBaseModelNamepace = '';
+
+        if (! empty(config('entity.model.custom_base_directory'))) {
+            $customBaseModelNamepace = config('entity.model.custom_base_directory').'\\';
+        }
+
+        $customBaseModelNamepace .= config('entity.model.custom_base_name');
+
+        $stub = str_replace('{{classNamespace}}', config('entity.model.namespace'), $stub);
+
+        $stub = str_replace('{{customBaseModelNamespace}}', $customBaseModelNamepace, $stub);
+
+        $stub = str_replace('{{className}}', $this->entity, $stub);
+        $stub = str_replace('{{customBaseName}}', config('entity.model.custom_base_name'), $stub);
 
         $this->files->put($path, $stub);
 
