@@ -2,7 +2,7 @@
 
 All notable changes will be documented in this file.
 
-## [v1.1.0 (2018-12-26)](https://github.com/bukankalengkaleng/laravel-entity/compare/1.0.0...1.1.0)
+## [v1.1.0 (2018-12-26)](https://github.com/bukankalengkaleng/laravel-entity/compare/v1.0.0...v1.1.0)
 
 ### Added
 - Add screenshot
