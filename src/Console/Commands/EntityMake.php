@@ -449,7 +449,7 @@ class EntityMake extends Command
 
                 case 'none':
                     if ($this->files->exists(
-                        $path = $this->controllerName
+                        $path = $controllerPath.'/'.$this->controllerName
                     )) {
                         $this->input->setOption('controller', false);
 
@@ -465,7 +465,7 @@ class EntityMake extends Command
 
                 default:
                     if ($this->files->exists(
-                        $path = $this->namespace.'/'.$this->controllerName
+                        $path = $controllerPath.'/'.$this->namespace.'/'.$this->controllerName
                     )) {
                         $this->input->setOption('controller', false);
 
