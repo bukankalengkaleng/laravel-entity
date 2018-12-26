@@ -37,20 +37,20 @@ Kamu bisa mem-*publish* file (`config`) dari package ini dengan cara:
 
 1. `php artisan entity:make Product`
 1. Kamu akan dapati entitas **Product** yang lengkap:
-    1. app/Models/**Product.php**
-    1. database/migrations/**create_products_table.php**
-    1. database/factories/**ProductFactory.php**
-    1. database/seeds/**ProductsTableSeeder.php**
-    1. database/seeds/dummies/**Products.php**
-    1. app/Http/Controllers/Admin/**ProductController.php**
-    1. app/Http/Controllers/Frontend/**ProductController.php**
-    1. app/Http/Requests/Admin/**ProductStore.php**
-    1. app/Http/Requests/Admin/**ProductUpdate.php**
-    1. app/Http/Requests/Frontend/**ProductStore.php**
-    1. app/Http/Requests/Frontend/**ProductUpdate.php**
-    1. app/Policies/**ProductPolicy.php**
-    1. app/tests/Feature/**ProductTest.php**
-    1. app/tests/Unit/**ProductTest.php**
+    - app/Models/**Product.php**
+    - database/migrations/**create_products_table.php**
+    - database/factories/**ProductFactory.php**
+    - database/seeds/**ProductsTableSeeder.php**
+    - database/seeds/dummies/**Products.php**
+    - app/Http/Controllers/Admin/**ProductController.php**
+    - app/Http/Controllers/Frontend/**ProductController.php**
+    - app/Http/Requests/Admin/**ProductStore.php**
+    - app/Http/Requests/Admin/**ProductUpdate.php**
+    - app/Http/Requests/Frontend/**ProductStore.php**
+    - app/Http/Requests/Frontend/**ProductUpdate.php**
+    - app/Policies/**ProductPolicy.php**
+    - app/tests/Feature/**ProductTest.php**
+    - app/tests/Unit/**ProductTest.php**
 
 ## Roadmap
 
