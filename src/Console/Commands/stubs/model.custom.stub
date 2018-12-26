@@ -1,6 +1,6 @@
 <?php
 
-namespace {{modelNamespace}};
+namespace App\{{modelNamespace}};
 
 use {{customBaseDirectory}};
 
