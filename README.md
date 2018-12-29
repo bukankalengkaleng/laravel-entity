@@ -6,11 +6,11 @@
 
 ## Deskripsi
 
-*Artisan command* untuk membuat entitas yang lengkap.
+Artisan *command* untuk membuat entitas yang lengkap.
 
 ## Motivasi
 
-Membuat entitas (contoh: *Product, Employee*, dsb) yang lengkap (ada *Model, Factory, Migration, Form Requests, Feature / Unit tests, Policy*, dan *Controller*-nya) akan memakan waktu jika dilakukan manual. Artisan command ini akan mempercepatnya.
+Membuat entitas (contoh: *Product, Employee*, dsb) yang lengkap (ada *Model, Factory, Migration, Form Requests, Feature / Unit tests, Policy*, dan *Controller*-nya) akan memakan waktu jika dilakukan manual. Artisan *command* ini akan mempercepatnya.
 
 ## Instalasi
 
@@ -29,7 +29,7 @@ Laravel v5.5 dan keatas akan otomatis meregistrasi package ini. Jika kamu menggu
 
 ## Cara Menggunakan
 
-1. Jalankan artisan `entity:make`
+1. Jalankan perintah
     ```
     php artisan entity:make Product
     ```
