@@ -1,12 +1,14 @@
 <p align="center"><img src="screenshots/logo.png" width="50%"></p>
 
+<p align="center">Readme ini ditulis dalam bahasa Inggris. <a href="https://github.com/bukankalengkaleng/laravel-entity/blob/master/README.md">Versi bahasa Indonesianya ada disini</a>.</p>
+
+---
+
 [![License](https://poser.pugx.org/bukankalengkaleng/laravel-entity/license)](https://packagist.org/packages/bukankalengkaleng/laravel-entity) 
 [![composer.lock](https://poser.pugx.org/bukankalengkaleng/laravel-entity/composerlock)](https://packagist.org/packages/bukankalengkaleng/laravel-entity) 
 [![Latest Stable Version](https://poser.pugx.org/bukankalengkaleng/laravel-entity/v/stable)](https://packagist.org/packages/bukankalengkaleng/laravel-entity) 
 [![Total Downloads](https://poser.pugx.org/bukankalengkaleng/laravel-entity/downloads)](https://packagist.org/packages/bukankalengkaleng/laravel-entity)
 [![Build Status](https://travis-ci.org/bukankalengkaleng/laravel-entity.svg?branch=master)](https://travis-ci.org/bukankalengkaleng/laravel-entity) 
-
-> Readme ini ditulis dalam bahasa Inggris. [Versi bahasa Indonesianya ada disini](https://github.com/bukankalengkaleng/laravel-entity/blob/master/README.md).
 
 ## Description
 
