@@ -67,7 +67,7 @@ php artisan vendor:publish --tag="laravel-entity"
 
 All planning goes to [Roadmap](https://github.com/bukankalengkaleng/laravel-entity/blob/master/ROADMAP.md) file.
 
-## Contributing
+## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/bukankalengkaleng/laravel-entity/issues)
 
 1. Send PR
 1. Please do not take it personal if your PR got rejected

@@ -67,7 +67,7 @@ php artisan vendor:publish --tag="laravel-entity"
 
 Untuk mengetahui rencana kedepan package ini silahkan membaca [Roadmap](https://github.com/bukankalengkaleng/laravel-entity/blob/master/ROADMAP.md).
 
-## Kontribusi
+## Kontribusi [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/bukankalengkaleng/laravel-entity/issues)
 
 1. Kirim PR
 1. Gak perlu baper kalo PR tertolak
