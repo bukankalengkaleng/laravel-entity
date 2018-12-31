@@ -53,13 +53,15 @@ Laravel v5.5 dan keatas akan otomatis meregistrasi package ini. Jika kamu menggu
     - app/tests/Feature/**ProductTest.php**
     - app/tests/Unit/**ProductTest.php**
 
-    <img src="screenshots/01.png" width="45%"> <img src="screenshots/02.png" width="45%">
-
 Namespaces entitas (`Admin` dan `Frontend`) dapat diatur dalam file `config/entity.php` yang harus kamu publish dahulu dengan cara:
 
 ```
 php artisan vendor:publish --tag="laravel-entity"
 ```
+
+## Screenshots
+
+<img src="screenshots/01.png" width="45%"> <img src="screenshots/02.png" width="45%">
 
 ## Roadmap
 
