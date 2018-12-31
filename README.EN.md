@@ -53,7 +53,7 @@ In Laravel 5.5 the service provider will automatically get registered. In older 
     - app/tests/Feature/**ProductTest.php**
     - app/tests/Unit/**ProductTest.php**
 
-    <img src="screenshots/01.png" width="60%">
+    <img src="screenshots/01.png" width="45%"> <img src="screenshots/02.png" width="45%">
 
 The entity's namespaces (`Admin` and `Frontend`) are configurable via the `config/entity.php` file, which you have to publish first:
 
