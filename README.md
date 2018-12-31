@@ -1,4 +1,4 @@
-# <img src="https://seeklogo.com/images/L/laravel-logo-9B01588B1F-seeklogo.com.png" width="24px"> Laravel Entity 🛸
+# <img src="https://seeklogo.com/images/L/laravel-logo-9B01588B1F-seeklogo.com.png" width="24px"> Laravel Entity 🧱
 
 [![License](https://poser.pugx.org/bukankalengkaleng/laravel-entity/license)](https://packagist.org/packages/bukankalengkaleng/laravel-entity) 
 [![composer.lock](https://poser.pugx.org/bukankalengkaleng/laravel-entity/composerlock)](https://packagist.org/packages/bukankalengkaleng/laravel-entity) 
