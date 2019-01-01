@@ -1,8 +1,9 @@
 language: php
+dist: trusty
 
 php:
-  - "7.2"
-  - "7.3"
+  - 7.2
+  - 7.3
 
 before_script:
   - composer self-update
@@ -15,3 +16,14 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t b1e18394-1d08-4da2-9371-1d8e259b06b7
+
+addons:
+  sonarcloud:
+    organization: "bukankalengkaleng"
+
+script:
+  - sonar-scanner
+
+cache:
+  directories:
+    - '$HOME/.sonar/cache'
