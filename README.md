@@ -4,9 +4,9 @@
 
 ---
 
-| Development | Code Quality | Release | 
+| Development | Code Quality | Release |
 | :---------: | :----------: | :-----: |
-| [![Build Status](https://travis-ci.org/bukankalengkaleng/laravel-entity.svg?branch=master)](https://travis-ci.org/bukankalengkaleng/laravel-entity) <br> [![Maintainability](https://api.codeclimate.com/v1/badges/e0369d6cc9799b353c0a/maintainability)](https://codeclimate.com/github/bukankalengkaleng/laravel-entity/maintainability) <br> [![Test Coverage](https://api.codeclimate.com/v1/badges/e0369d6cc9799b353c0a/test_coverage)](https://codeclimate.com/github/bukankalengkaleng/laravel-entity/test_coverage) | [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bukankalengkaleng/laravel-entity/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bukankalengkaleng/laravel-entity/?branch=master) <br> [![codecov](https://codecov.io/gh/bukankalengkaleng/laravel-entity/branch/master/graph/badge.svg)](https://codecov.io/gh/bukankalengkaleng/laravel-entity) <br> [![Code Intelligence Status](https://scrutinizer-ci.com/g/bukankalengkaleng/laravel-entity/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence) | [![Total Downloads](https://poser.pugx.org/bukankalengkaleng/laravel-entity/downloads)](https://packagist.org/packages/bukankalengkaleng/laravel-entity) <br> [![Latest Stable Version](https://poser.pugx.org/bukankalengkaleng/laravel-entity/v/stable)](https://packagist.org/packages/bukankalengkaleng/laravel-entity) <br> [![License](https://poser.pugx.org/bukankalengkaleng/laravel-entity/license)](https://packagist.org/packages/bukankalengkaleng/laravel-entity) | 
+| [![Build Status](https://travis-ci.org/bukankalengkaleng/laravel-entity.svg?branch=master)](https://travis-ci.org/bukankalengkaleng/laravel-entity) <br> [![Maintainability](https://api.codeclimate.com/v1/badges/e0369d6cc9799b353c0a/maintainability)](https://codeclimate.com/github/bukankalengkaleng/laravel-entity/maintainability) <br> [![Test Coverage](https://api.codeclimate.com/v1/badges/e0369d6cc9799b353c0a/test_coverage)](https://codeclimate.com/github/bukankalengkaleng/laravel-entity/test_coverage) | [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bukankalengkaleng/laravel-entity/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bukankalengkaleng/laravel-entity/?branch=master) <br> [![codecov](https://codecov.io/gh/bukankalengkaleng/laravel-entity/branch/master/graph/badge.svg)](https://codecov.io/gh/bukankalengkaleng/laravel-entity) <br> [![Code Intelligence Status](https://scrutinizer-ci.com/g/bukankalengkaleng/laravel-entity/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence) | [![Total Downloads](https://poser.pugx.org/bukankalengkaleng/laravel-entity/downloads)](https://packagist.org/packages/bukankalengkaleng/laravel-entity) <br> [![Latest Stable Version](https://poser.pugx.org/bukankalengkaleng/laravel-entity/v/stable)](https://packagist.org/packages/bukankalengkaleng/laravel-entity) <br> [![License](https://poser.pugx.org/bukankalengkaleng/laravel-entity/license)](https://packagist.org/packages/bukankalengkaleng/laravel-entity) |
 
 ## Deskripsi
 
@@ -18,7 +18,7 @@ Membuat entitas (contoh: *Product, Employee*, dsb) yang lengkap (ada *Model, Fac
 
 ## Instalasi
 
-```
+```bash
 composer require bukankalengkaleng/laravel-entity
 ```
 
@@ -34,9 +34,11 @@ Laravel v5.5 dan keatas akan otomatis meregistrasi package ini. Jika kamu menggu
 ## Cara Menggunakan
 
 1. Jalankan perintah
-    ```
+
+    ```bash
     php artisan entity:make Product
     ```
+
 1. Kamu akan dapatkan entitas **Product** yang lengkap:
     - app/Models/**Product.php**
     - database/migrations/**create_products_table.php**
@@ -55,7 +57,7 @@ Laravel v5.5 dan keatas akan otomatis meregistrasi package ini. Jika kamu menggu
 
 Namespaces entitas (`Admin` dan `Frontend`) dapat diatur dalam file `config/entity.php` yang harus kamu publish dahulu dengan cara:
 
-```
+```bash
 php artisan vendor:publish --tag="laravel-entity"
 ```
 
