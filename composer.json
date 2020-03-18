@@ -1,7 +1,11 @@
 {
     "name": "bukankalengkaleng/laravel-entity",
     "description": "Generate an entity along with their artefacts (Model, Controller, Migration, Form Request, Tests, Factory, Policy)",
-    "keywords": ["bukankalengkaleng", "laravel", "artisan", "command", "entity"],
+    "keywords": [
+        "laravel package", 
+        "artisan command", 
+        "entity"
+    ],
     "type": "library",
     "license": "MIT",
     "homepage": "https://github.com/bukankalengkaleng/laravel-entity",
@@ -14,9 +18,13 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "php": "^7.2",
+        "illuminate/support": "^7.0"
+    },
     "require-dev": {
-        "phpunit/phpunit": "^7.0"
+        "orchestra/testbench": "^5.0",
+        "phpunit/phpunit": "^8.0|^9.0"
     },
     "autoload": {
         "psr-4": {
