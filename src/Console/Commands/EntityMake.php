@@ -2,6 +2,7 @@
 
 namespace BukanKalengKaleng\LaravelEntity\Console\Commands;
 
+use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 
@@ -278,12 +279,12 @@ class EntityMake extends Command
     {
         if ($this->option('migration')) {
 
-            $this->pluralizedEntity = str_plural($this->entity);
-            $migration = 'create_'.snake_case($this->pluralizedEntity).'_table';
+            $this->pluralizedEntity = Str::plural($this->entity);
+            $migration = 'create_'.Str::snake($this->pluralizedEntity).'_table';
 
             $this->callSilent('make:migration', [
                 'name'      => $migration,
-                '--create'  => snake_case($this->pluralizedEntity),
+                '--create'  => Str::snake($this->pluralizedEntity),
             ]);
 
             $this->addToTable('Migration', $migration.'.php');
@@ -581,7 +582,7 @@ class EntityMake extends Command
         $stub = str_replace('{{requestUpdateNamespace}}', $namespace, $stub);
         $stub = str_replace('{{requestUpdateName}}', $this->removeFileExtension($this->requestUpdateName), $stub);
 
-        $stub = str_replace('{{modelNameVariabel}}', camel_case($this->entity), $stub);
+        $stub = str_replace('{{modelNameVariabel}}', Str::camel($this->entity), $stub);
 
         $this->makeDirectory($path);
 
