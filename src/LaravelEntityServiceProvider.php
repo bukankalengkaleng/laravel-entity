@@ -2,8 +2,8 @@
 
 namespace BukanKalengKaleng\LaravelEntity;
 
-use Illuminate\Support\ServiceProvider;
 use BukanKalengKaleng\LaravelEntity\Console\Commands\EntityMake;
+use Illuminate\Support\ServiceProvider;
 
 class LaravelEntityServiceProvider extends ServiceProvider
 {

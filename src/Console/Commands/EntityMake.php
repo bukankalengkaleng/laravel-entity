@@ -2,9 +2,9 @@
 
 namespace BukanKalengKaleng\LaravelEntity\Console\Commands;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 class EntityMake extends Command
 {
@@ -18,9 +18,9 @@ class EntityMake extends Command
     protected $pluralizedEntity;
     protected $requestStoreName;
     protected $requestUpdateName;
-    protected $additionalSteps  = [];
-    protected $tableContents    = [];
-    protected $tableHeaders     = ['Artefact', 'Filename and/or Location'];
+    protected $additionalSteps = [];
+    protected $tableContents = [];
+    protected $tableHeaders = ['Artefact', 'Filename and/or Location'];
 
     /**
      * The name and signature of the console command.
@@ -81,7 +81,7 @@ class EntityMake extends Command
 
         $this->comment('[START] Creating new entity.....');
 
-        $this->entity    = $this->setEntityName($this->argument('name'));
+        $this->entity = $this->setEntityName($this->argument('name'));
         $this->namespace = $this->option('namespace');
 
         switch ($this->checkExistingModel()) {
@@ -128,12 +128,13 @@ class EntityMake extends Command
     }
 
     /**
-     * Set a proper entity name
+     * Set a proper entity name.
      *
-     * @param String $name
+     * @param string $name
      * @return void
      */
-    protected function setEntityName($name) {
+    protected function setEntityName($name)
+    {
         if ($this->argument('name') == strtolower($this->argument('name'))) {
             return ucfirst($this->argument('name'));
         }
@@ -142,7 +143,7 @@ class EntityMake extends Command
     }
 
     /**
-     * Check for existing model
+     * Check for existing model.
      *
      * @return void
      */
@@ -151,7 +152,7 @@ class EntityMake extends Command
         $modelChoice = '';
         $this->modelName = $this->entity.'.php';
         $this->modelNamespace = 'App/'.config('entity.model.namespace');
-        $this->modelFullPath  = app_path(config('entity.model.namespace').'/'.$this->modelName);
+        $this->modelFullPath = app_path(config('entity.model.namespace').'/'.$this->modelName);
 
         if ($this->files->exists($this->modelFullPath)) {
             $this->error('Model already exists: '.$this->modelNamespace.'/'.$this->modelName);
@@ -159,10 +160,9 @@ class EntityMake extends Command
             $modelChoice = $this->choice('What should we do?', [
                 'Overwrite existing model',
                 'Use existing model',
-                'Abort'
+                'Abort',
             ]);
-        }
-        else {
+        } else {
             $this->makeDirectory($this->modelFullPath);
 
             $modelChoice = 'No model';
@@ -174,7 +174,7 @@ class EntityMake extends Command
     }
 
     /**
-     * Run make:model command with defined entity name and/or namespace
+     * Run make:model command with defined entity name and/or namespace.
      *
      * @return void
      */
@@ -182,8 +182,7 @@ class EntityMake extends Command
     {
         if (config('entity.model.should_use_default_base') === true) {
             $this->compileModelStub($this->modelFullPath);
-        }
-        else {
+        } else {
             $this->makeCustomBaseModel();
 
             $this->compileCustomModelStub($this->modelFullPath);
@@ -195,7 +194,7 @@ class EntityMake extends Command
     }
 
     /**
-     * Make custom base model
+     * Make custom base model.
      *
      * @return void
      */
@@ -223,9 +222,9 @@ class EntityMake extends Command
     }
 
     /**
-     * Compile the Model stub
+     * Compile the Model stub.
      *
-     * @param String $path
+     * @param string $path
      * @return void
      */
     protected function compileModelStub($path)
@@ -241,9 +240,9 @@ class EntityMake extends Command
     }
 
     /**
-     * Compile the Custom Model stub
+     * Compile the Custom Model stub.
      *
-     * @param String $path
+     * @param string $path
      * @return void
      */
     protected function compileCustomModelStub($path)
@@ -271,14 +270,13 @@ class EntityMake extends Command
     }
 
     /**
-     * Run make:migration command with defined entity name and/or namespace
+     * Run make:migration command with defined entity name and/or namespace.
      *
      * @return void
      */
     protected function makeMigration()
     {
         if ($this->option('migration')) {
-
             $this->pluralizedEntity = Str::plural($this->entity);
             $migration = 'create_'.Str::snake($this->pluralizedEntity).'_table';
 
@@ -294,19 +292,18 @@ class EntityMake extends Command
     }
 
     /**
-     * Run make:request command with defined entity name and/or namespace
+     * Run make:request command with defined entity name and/or namespace.
      *
      * @return void
      */
     protected function makeRequest()
     {
         if ($this->option('request')) {
-
-            $this->requestStoreName  = $this->entity.'Store.php';
+            $this->requestStoreName = $this->entity.'Store.php';
             $this->requestUpdateName = $this->entity.'Update.php';
 
             $formRequestPath = app_path('Http/Requests');
-            $backendPath  = $formRequestPath.'/'.config('entity.namespace.backend');
+            $backendPath = $formRequestPath.'/'.config('entity.namespace.backend');
             $frontendPath = $formRequestPath.'/'.config('entity.namespace.frontend');
 
             $fileExistsMessage = 'Form Request already exists:';
@@ -314,68 +311,60 @@ class EntityMake extends Command
             switch (strtolower($this->namespace)) {
                 case 'both':
                     /** Store Request on Backend namespace */
-
                     if ($this->files->exists(
                         $path = $backendPath.'/'.$this->requestStoreName
                     )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.config('entity.namespace.backend').'/'.$this->requestStoreName);
-                    }
-                    else {
+                    } else {
                         $this->callSilent('make:request', [
-                            'name' => config('entity.namespace.backend').'/'.$this->removeFileExtension($this->requestStoreName)
+                            'name' => config('entity.namespace.backend').'/'.$this->removeFileExtension($this->requestStoreName),
                         ]);
 
                         $this->addToTable('Form Request', config('entity.namespace.backend').'/'.$this->requestStoreName);
                     }
 
                     /** Update Request on Backend namespace */
-
                     if ($this->files->exists(
                         $path = $backendPath.'/'.$this->requestUpdateName
                     )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.config('entity.namespace.backend').'/'.$this->requestUpdateName);
-                    }
-                    else {
+                    } else {
                         $this->callSilent('make:request', [
-                            'name' => config('entity.namespace.backend').'/'.$this->removeFileExtension($this->requestUpdateName)
+                            'name' => config('entity.namespace.backend').'/'.$this->removeFileExtension($this->requestUpdateName),
                         ]);
 
                         $this->addToTable('Form Request', config('entity.namespace.backend').'/'.$this->requestUpdateName);
                     }
 
                     /** Store Request on Frontend namespace */
-
                     if ($this->files->exists(
                         $path = $frontendPath.'/'.$this->requestStoreName
                     )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.config('entity.namespace.frontend').'/'.$this->requestStoreName);
-                    }
-                    else {
+                    } else {
                         $this->callSilent('make:request', [
-                            'name' => config('entity.namespace.frontend').'/'.$this->removeFileExtension($this->requestStoreName)
+                            'name' => config('entity.namespace.frontend').'/'.$this->removeFileExtension($this->requestStoreName),
                         ]);
 
                         $this->addToTable('Form Request', config('entity.namespace.frontend').'/'.$this->requestStoreName);
                     }
 
                     /** Update Request on Frontend namespace */
-
                     if ($this->files->exists(
                         $path = $frontendPath.'/'.$this->requestUpdateName
                     )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.config('entity.namespace.frontend').'/'.$this->requestUpdateName);
-                    }
-                    else {
+                    } else {
                         $this->callSilent('make:request', [
-                            'name' => config('entity.namespace.frontend').'/'.$this->removeFileExtension($this->requestUpdateName)
+                            'name' => config('entity.namespace.frontend').'/'.$this->removeFileExtension($this->requestUpdateName),
                         ]);
 
                         $this->addToTable('Form Request', config('entity.namespace.frontend').'/'.$this->requestUpdateName);
@@ -385,34 +374,30 @@ class EntityMake extends Command
 
                 case 'none':
                     /** Store Request */
-
                     if ($this->files->exists(
                         $path = $formRequestPath.'/'.$this->requestStoreName
                     )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.$this->requestStoreName);
-                    }
-                    else {
+                    } else {
                         $this->callSilent('make:request', [
-                            'name' => $this->removeFileExtension($this->requestStoreName)
+                            'name' => $this->removeFileExtension($this->requestStoreName),
                         ]);
 
                         $this->addToTable('Form Request', $this->requestStoreName);
                     }
 
                     /** Update Request */
-
                     if ($this->files->exists(
                         $path = $formRequestPath.'/'.$this->requestUpdateName
                     )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.$this->requestUpdateName);
-                    }
-                    else {
+                    } else {
                         $this->callSilent('make:request', [
-                            'name' => $this->removeFileExtension($this->requestUpdateName)
+                            'name' => $this->removeFileExtension($this->requestUpdateName),
                         ]);
 
                         $this->addToTable('Form Request', $this->requestUpdateName);
@@ -422,34 +407,30 @@ class EntityMake extends Command
 
                 default:
                     /** Store Request */
-
                     if ($this->files->exists(
                         $path = $formRequestPath.'/'.$this->namespace.'/'.$this->requestStoreName
                     )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.$this->namespace.'/'.$this->requestStoreName);
-                    }
-                    else {
+                    } else {
                         $this->callSilent('make:request', [
-                            'name' => $this->namespace.'/'.$this->removeFileExtension($this->requestStoreName)
+                            'name' => $this->namespace.'/'.$this->removeFileExtension($this->requestStoreName),
                         ]);
 
                         $this->addToTable('Form Request', $this->namespace.'/'.$this->requestStoreName);
                     }
 
                     /** Frontend Request */
-
                     if ($this->files->exists(
                         $path = $formRequestPath.'/'.$this->namespace.'/'.$this->requestUpdateName
                     )) {
                         $this->input->setOption('request', false);
 
                         $this->line($fileExistsMessage.' '.$this->namespace.'/'.$this->requestUpdateName);
-                    }
-                    else {
+                    } else {
                         $this->callSilent('make:request', [
-                            'name' => $this->namespace.'/'.$this->removeFileExtension($this->requestUpdateName)
+                            'name' => $this->namespace.'/'.$this->removeFileExtension($this->requestUpdateName),
                         ]);
 
                         $this->addToTable('Form Request', $this->namespace.'/'.$this->requestUpdateName);
@@ -465,18 +446,17 @@ class EntityMake extends Command
     }
 
     /**
-     * Run make:controller command with defined entity name and/or namespace
+     * Run make:controller command with defined entity name and/or namespace.
      *
      * @return void
      */
     protected function makeController()
     {
         if ($this->option('controller')) {
-
             $this->controllerName = $this->entity.'Controller.php';
 
             $controllerPath = app_path('Http/Controllers');
-            $backendPath  = $controllerPath.'/'.config('entity.namespace.backend');
+            $backendPath = $controllerPath.'/'.config('entity.namespace.backend');
             $frontendPath = $controllerPath.'/'.config('entity.namespace.frontend');
 
             $fileExistsMessage = 'Controller already exists:';
@@ -484,30 +464,26 @@ class EntityMake extends Command
             switch (strtolower($this->namespace)) {
                 case 'both':
                     /** Backend's Controller */
-
                     if ($this->files->exists(
                         $path = $backendPath.'/'.$this->controllerName
                     )) {
                         $this->input->setOption('controller', false);
 
                         $this->line($fileExistsMessage.' '.config('entity.namespace.backend').'/'.$this->controllerName);
-                    }
-                    else {
+                    } else {
                         $this->compileControllerStub($path, config('entity.namespace.backend'));
 
                         $this->addToTable('Controller', config('entity.namespace.backend').'/'.$this->controllerName);
                     }
 
                     /** Frontend's Controller */
-
                     if ($this->files->exists(
                         $path = $frontendPath.'/'.$this->controllerName
                     )) {
                         $this->input->setOption('controller', false);
 
                         $this->line($fileExistsMessage.' '.config('entity.namespace.frontend').'/'.$this->controllerName);
-                    }
-                    else {
+                    } else {
                         $this->compileControllerStub($path, config('entity.namespace.frontend'));
 
                         $this->addToTable('Controller', config('entity.namespace.frontend').'/'.$this->controllerName);
@@ -522,8 +498,7 @@ class EntityMake extends Command
                         $this->input->setOption('controller', false);
 
                         $this->line($fileExistsMessage.' '.$this->controllerName);
-                    }
-                    else {
+                    } else {
                         $this->compileControllerStub($path);
 
                         $this->addToTable('Controller', $this->controllerName);
@@ -538,8 +513,7 @@ class EntityMake extends Command
                         $this->input->setOption('controller', false);
 
                         $this->line($fileExistsMessage.' '.$this->namespace.'/'.$this->controllerName);
-                    }
-                    else {
+                    } else {
                         $this->compileControllerStub($path, $this->namespace);
 
                         $this->addToTable('Controller', $this->namespace.'/'.$this->controllerName);
@@ -555,17 +529,16 @@ class EntityMake extends Command
     }
 
     /**
-     * Compile the Controller stub
+     * Compile the Controller stub.
      *
-     * @param String $path
+     * @param string $path
      * @return void
      */
     protected function compileControllerStub($path, $namespace = '')
     {
         if ($namespace) {
             $stub = $this->files->get(__DIR__.'/stubs/controller.stub');
-        }
-        else {
+        } else {
             $stub = $this->files->get(__DIR__.'/stubs/controller.none.stub');
         }
 
@@ -592,14 +565,13 @@ class EntityMake extends Command
     }
 
     /**
-     * Run make:factory command with defined entity name and/or namespace
+     * Run make:factory command with defined entity name and/or namespace.
      *
      * @return void
      */
     protected function makeFactory()
     {
         if ($this->option('factory')) {
-
             $factory = $this->entity.'Factory';
 
             if ($this->files->exists(
@@ -619,9 +591,9 @@ class EntityMake extends Command
     }
 
     /**
-     * Compile the Factory stub
+     * Compile the Factory stub.
      *
-     * @param String $path
+     * @param string $path
      * @return void
      */
     protected function compileFactoryStub($path)
@@ -637,14 +609,13 @@ class EntityMake extends Command
     }
 
     /**
-     * Run make:policy command with defined entity name and/or namespace
+     * Run make:policy command with defined entity name and/or namespace.
      *
      * @return void
      */
     protected function makePolicy()
     {
         if ($this->option('policy')) {
-
             $policy = $this->entity.'Policy';
 
             if ($this->files->exists(
@@ -669,16 +640,14 @@ class EntityMake extends Command
     }
 
     /**
-     * Run make:seed command with defined entity name and/or namespace
+     * Run make:seed command with defined entity name and/or namespace.
      *
      * @return void
      */
     protected function makeSeeder()
     {
         /** Table seeder */
-
         if ($this->option('seeder')) {
-
             $seederTable = ($this->pluralizedEntity).'TableSeeder.php';
 
             if ($this->files->exists(
@@ -687,10 +656,9 @@ class EntityMake extends Command
                 $this->input->setOption('seeder', false);
 
                 $this->line('Table Seeder already exists: '.$seederTable);
-            }
-            else {
+            } else {
                 $this->callSilent('make:seeder', [
-                    'name' => $this->removeFileExtension($seederTable)
+                    'name' => $this->removeFileExtension($seederTable),
                 ]);
 
                 $this->addToTable('Table Seeder', $seederTable);
@@ -702,10 +670,8 @@ class EntityMake extends Command
         }
 
         /** Dummy data seeder */
-
         if (config('entity.dummy.should_create') === true) {
             if ($this->option('dummy')) {
-
                 $seederDummy = $this->pluralizedEntity.'.php';
 
                 $path = database_path('seeds/'.config('entity.dummy.directory').'/'.$seederDummy);
@@ -714,8 +680,7 @@ class EntityMake extends Command
                     $this->input->setOption('dummy', false);
 
                     $this->line('Dummy Seeder already exists: '.config('entity.dummy.dummies').$seederDummy);
-                }
-                else {
+                } else {
                     $this->compileDummySeederStub($path);
 
                     $this->makeDummyDataSeeder();
@@ -731,9 +696,9 @@ class EntityMake extends Command
     }
 
     /**
-     * Compile the dummy data Seeder stub
+     * Compile the dummy data Seeder stub.
      *
-     * @param String $path
+     * @param string $path
      * @return void
      */
     protected function compileDummySeederStub($path)
@@ -753,7 +718,7 @@ class EntityMake extends Command
     }
 
     /**
-     * Make DummyDataSeeder, if not exists
+     * Make DummyDataSeeder, if not exists.
      *
      * @return void
      */
@@ -769,7 +734,7 @@ class EntityMake extends Command
     }
 
     /**
-     * Run make:test command with defined entity name and/or namespace
+     * Run make:test command with defined entity name and/or namespace.
      *
      * @return void
      */
@@ -778,7 +743,6 @@ class EntityMake extends Command
         if ($this->option('test')) {
 
             /** Feature test */
-
             $test = $this->entity.'Test';
 
             if ($this->files->exists(
@@ -787,10 +751,9 @@ class EntityMake extends Command
                 $this->input->setOption('test', false);
 
                 $this->line('Test: Feature already exists: Feature/'.$test.'.php');
-            }
-            else {
+            } else {
                 $this->callSilent('make:test', [
-                    'name' => $test
+                    'name' => $test,
                 ]);
 
                 $this->addToTable('Test: Feature', 'Feature/'.$test.'.php');
@@ -799,15 +762,13 @@ class EntityMake extends Command
             }
 
             /** Unit test */
-
             if ($this->files->exists(
                 $path = base_path().'/tests/Unit/'.$test.'.php')
             ) {
                 $this->input->setOption('test', false);
 
                 $this->line('Test: Unit already exists: Unit/'.$test.'.php');
-            }
-            else {
+            } else {
                 $this->callSilent('make:test', [
                     'name' => $test,
                     '--unit' => true,
@@ -834,7 +795,7 @@ class EntityMake extends Command
     }
 
     /**
-     * Print the whole command result / report
+     * Print the whole command result / report.
      *
      * @return void
      */
@@ -842,16 +803,12 @@ class EntityMake extends Command
     {
         if ($this->option('controller') ||
            ($this->option('controller') && $this->option('request'))) {
-
             array_push($this->additionalSteps, 'Define a route for the generated Controller');
-        }
-        else if ($this->option('request')) {
-
+        } elseif ($this->option('request')) {
             array_push($this->additionalSteps, 'Use generated Requests for the Controller');
         }
 
         if (in_array(true, $this->options(), true) === false) {
-
             $this->error('No files has been created.');
         }
 
@@ -859,21 +816,19 @@ class EntityMake extends Command
         $this->line('');
 
         if (in_array(true, $this->options(), true) === true) {
-
             $this->table($this->tableHeaders, $this->tableContents);
             $this->line('');
         }
     }
 
     /**
-     * Print additional steps, if any
+     * Print additional steps, if any.
      *
      * @return void
      */
     protected function printAdditionalSteps()
     {
         if ($this->additionalSteps) {
-
             $this->comment('ATTENTION: You may have to proceed these additional steps:');
 
             foreach ($this->additionalSteps as $key => $step) {
@@ -885,10 +840,10 @@ class EntityMake extends Command
     }
 
     /**
-     * Add new row of data to output table
+     * Add new row of data to output table.
      *
-     * @param String $artefact
-     * @param String $location
+     * @param string $artefact
+     * @param string $location
      * @return void
      */
     protected function addToTable($artefact, $location)
@@ -900,7 +855,7 @@ class EntityMake extends Command
     }
 
     /**
-     * Remove '.php' extension from file name
+     * Remove '.php' extension from file name.
      */
     protected function removeFileExtension($filename)
     {
