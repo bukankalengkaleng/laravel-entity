@@ -1,6 +1,6 @@
 # Laravel Entity 🧱
 
-This readme is written in Bahasa. [English version is here](README.EN.md)
+This readme is written in Bahasa. [English version is here.](README.EN.md)
 
 |     | Status |
 | --- | --- |
